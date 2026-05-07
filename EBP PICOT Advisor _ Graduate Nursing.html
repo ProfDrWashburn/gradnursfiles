@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0060)file:///C:/Users/rn4ho/Downloads/ebp-topic-advisor-v5_8.html -->
+<!-- saved from url=(0061)file:///C:/Users/rn4ho/Downloads/ebp-topic-advisor-v5_12.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -292,6 +292,10 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
 .not-exempt-box h3{font-family:'Lora',serif;font-size:1rem;color:var(--danger);margin-bottom:0.35rem;}
 .not-exempt-box p{font-size:0.85rem;color:var(--danger);line-height:1.5;}
 
+.preview-btn{font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:0.25rem 0.65rem;border-radius:20px;border:1.5px solid var(--border);background:var(--warm-white);color:var(--text-light);cursor:pointer;white-space:nowrap;transition:all 0.18s;flex-shrink:0;}
+.preview-btn.active{background:#4a2a7a;border-color:#4a2a7a;color:white;}
+.preview-btn:hover{border-color:var(--teal);color:var(--teal);}
+
 /* STEP NAV DOTS */
 .step-dots{display:flex;gap:0.28rem;align-items:center;flex-wrap:wrap;}
 .step-dot-btn{width:22px;height:22px;border-radius:50%;border:2px solid var(--border);background:var(--warm-white);cursor:default;font-size:0.62rem;font-weight:700;color:var(--text-light);display:flex;align-items:center;justify-content:center;transition:all 0.18s;flex-shrink:0;title:'';}
@@ -349,6 +353,7 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
     <div class="step-dot-btn" id="sdot-11" onclick="navDot(11)" title="Summary">✓</div>
   </div>
   <span class="save-ind" id="saveInd">✓ Saved</span>
+  <button class="preview-btn" id="previewBtn" onclick="togglePreview()" title="Toggle preview mode to skip validation and jump to any step">Preview</button>
   <span class="prog-pct" id="pPct">0%</span>
 </div>
 
@@ -521,6 +526,24 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
       <div class="live-preview" id="lpStage1" style="display:none;">
         <div class="live-preview-lbl">Your problem statement taking shape (updates as you type):</div>
         <span id="lpStage1Text"></span>
+      </div>
+
+      <div class="dmaic-resource-panel">
+        <div class="drp-title">Where to find your baseline data and benchmarks</div>
+        <p style="font-size:0.82rem;color:var(--text-mid);margin-bottom:0.75rem;line-height:1.5;">The fields above ask you for current rates and benchmark comparisons. If you do not have those numbers yet, the resources below are where nurses typically find them. Check these before moving to Stage 2 so your root cause analysis is grounded in real data.</p>
+        <div class="drp-grid">
+          <div class="drp-item"><a href="https://www.ahrq.gov/patient-safety/index.html" target="_blank">AHRQ Patient Safety Network</a><p>Toolkits, benchmarks, and evidence-based guidelines for falls, HAIs, care transitions, and more.</p></div>
+          <div class="drp-item"><a href="https://www.ihi.org/resources" target="_blank">IHI (Institute for Healthcare Improvement)</a><p>Free Fishbone templates, PDSA worksheets, Pareto chart guides, and the IHI Model for Improvement.</p></div>
+          <div class="drp-item"><a href="https://www.pressganey.com/" target="_blank">NDNQI (Press Ganey)</a><p>National nursing-sensitive quality benchmarks. Your hospital may have access to unit-level data.</p></div>
+          <div class="drp-item"><a href="https://qualityindicators.ahrq.gov/" target="_blank">AHRQ Quality Indicators</a><p>Hospital-level quality measures for comparing performance to national standards.</p></div>
+          <div class="drp-item"><a href="https://www.jointcommission.org/measurement/" target="_blank">The Joint Commission</a><p>National Patient Safety Goals and quality compliance standards.</p></div>
+          <div class="drp-item"><a href="https://www.cms.gov/medicare/quality/measures" target="_blank">CMS Quality Measures</a><p>Readmission rates, HAC data, and patient experience benchmarks from Hospital Compare.</p></div>
+          <div class="drp-item"><a href="https://www.cdc.gov/hai/index.html" target="_blank">CDC Healthcare-Associated Infections</a><p>National HAI surveillance data and prevention guidelines.</p></div>
+          <div class="drp-item"><a href="https://www.ana.org/practice/patient-safety" target="_blank">ANA Patient Safety</a><p>Nursing-specific safety and quality practice standards.</p></div>
+        </div>
+        <div style="margin-top:0.75rem;font-size:0.8rem;color:var(--text-mid);">
+          <strong>Tip:</strong> Your hospital's quality department or charge nurse may also have unit-level dashboard data that is more specific to your setting than national databases.
+        </div>
       </div>
 
       <div class="stage-btns">
@@ -719,24 +742,6 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
         <label>Write your confirmed, narrowed problem statement. Use the summary above as your guide. Include who, what, where, and the measurable gap.</label>
         <textarea id="nFinalProblem" placeholder="Using the summary above, write 1-2 sentences. Example: On the 4-West medical-surgical unit, adult patients aged 65 and older experience a fall rate of 3.2 per 1,000 patient days, compared to the national benchmark of 1.9. The absence of a standardized nurse-led fall risk reassessment protocol embedded in the evening shift workflow has been identified as the primary process gap." style="min-height:90px;" oninput="updateStage3Preview()"></textarea>
         <span class="fhint">This statement carries directly into your PICOT question and your project summary.</span>
-      </div>
-
-      <!-- RESOURCES -->
-      <div class="dmaic-resource-panel">
-        <div class="drp-title">QI Data Sources and Tools for Nurses</div>
-        <div class="drp-grid">
-          <div class="drp-item"><a href="https://www.ahrq.gov/patient-safety/index.html" target="_blank">AHRQ Patient Safety Network</a><p>Toolkits, benchmarks, and evidence-based guidelines for falls, HAIs, care transitions, and more.</p></div>
-          <div class="drp-item"><a href="https://www.ihi.org/resources" target="_blank">IHI (Institute for Healthcare Improvement)</a><p>Free Fishbone templates, PDSA worksheets, Pareto chart guides, and the IHI Model for Improvement.</p></div>
-          <div class="drp-item"><a href="https://www.nursingquality.org/" target="_blank">NDNQI (Press Ganey)</a><p>National nursing-sensitive quality benchmarks. Your hospital may have access to unit-level data.</p></div>
-          <div class="drp-item"><a href="https://qualityindicators.ahrq.gov/" target="_blank">AHRQ Quality Indicators</a><p>Hospital-level quality measures for comparing performance to national standards.</p></div>
-          <div class="drp-item"><a href="https://www.jointcommission.org/measurement/" target="_blank">The Joint Commission</a><p>National Patient Safety Goals and quality compliance standards.</p></div>
-          <div class="drp-item"><a href="https://www.cms.gov/medicare/quality/measures" target="_blank">CMS Quality Measures</a><p>Readmission rates, HAC data, and patient experience benchmarks from Hospital Compare.</p></div>
-          <div class="drp-item"><a href="https://www.cdc.gov/hai/index.html" target="_blank">CDC Healthcare-Associated Infections</a><p>National HAI surveillance data and prevention guidelines.</p></div>
-          <div class="drp-item"><a href="https://www.ana.org/practice/patient-safety" target="_blank">ANA Patient Safety</a><p>Nursing-specific safety and quality practice standards.</p></div>
-        </div>
-        <div style="margin-top:0.75rem;font-size:0.8rem;color:var(--text-mid);">
-          <strong>Lean Six Sigma QI tools referenced in this step:</strong> 5 Whys, Fishbone (Ishikawa) Diagram, Pareto chart, Hierarchy of Controls, value stream mapping, run chart. Free templates available at IHI.org and AHRQ.gov.
-        </div>
       </div>
 
       <div class="stage-btns">
@@ -1433,6 +1438,41 @@ const TOTAL = 11;
 
 // ===== NAVIGATION =====
 let highestStep = 1;
+let previewMode = false;
+
+function togglePreview() {
+  previewMode = !previewMode;
+  const btn = document.getElementById('previewBtn');
+  btn.classList.toggle('active', previewMode);
+  btn.textContent = previewMode ? 'Preview ON' : 'Preview';
+  // in preview mode all dots become clickable
+  for (let i = 1; i <= TOTAL; i++) {
+    const dot = document.getElementById('sdot-' + i);
+    if (!dot) continue;
+    if (previewMode) {
+      if (!dot.classList.contains('sd-current')) dot.classList.add('sd-done');
+    } else {
+      updateDot(i);
+    }
+  }
+  if (previewMode) {
+    alert('Preview mode is ON. You can now jump to any step freely without completing the forms. Click Preview again to return to normal mode.');
+  }
+}
+
+function updateDot(i) {
+  const dot = document.getElementById('sdot-' + i);
+  if (!dot) return;
+  const currentStep = parseInt(document.querySelector('.step.active')?.id?.replace('step-','') || '1');
+  if (i === currentStep)       dot.className = 'step-dot-btn sd-current';
+  else if (i <= highestStep)   dot.className = 'step-dot-btn sd-done';
+  else                         dot.className = 'step-dot-btn';
+}
+
+function navDot(n) {
+  if (!previewMode && n > highestStep) return;
+  goTo(n);
+}
 
 function goTo(n) {
   document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
@@ -1446,21 +1486,16 @@ function goTo(n) {
   if (n === 8)  setupFeasStep();
   if (n === 10) setupPICOTStep();
   if (n === 11) buildSummary();
-  // update step dots
   if (n > highestStep) highestStep = n;
   for (let i = 1; i <= TOTAL; i++) {
-    const dot = document.getElementById('sdot-' + i);
-    if (!dot) continue;
-    if (i === n)             dot.className = 'step-dot-btn sd-current';
-    else if (i <= highestStep) dot.className = 'step-dot-btn sd-done';
-    else                     dot.className = 'step-dot-btn';
+    if (previewMode) {
+      const dot = document.getElementById('sdot-' + i);
+      if (dot) dot.className = 'step-dot-btn' + (i === n ? ' sd-current' : ' sd-done');
+    } else {
+      updateDot(i);
+    }
   }
   autoSave();
-}
-
-function navDot(n) {
-  if (n > highestStep) return;
-  goTo(n);
 }
 
 // ===== DEGREE =====
@@ -2504,6 +2539,9 @@ function restartTool() {
   document.querySelectorAll('.compiled-preview').forEach(el => el.style.display = 'none');
   degree = '';
   highestStep = 1;
+  previewMode = false;
+  const pb = document.getElementById('previewBtn');
+  if (pb) { pb.classList.remove('active'); pb.textContent = 'Preview'; }
   try { localStorage.removeItem(SAVE_KEY); } catch(e) {}
   document.getElementById('msnCard').className = 'deg-card';
   document.getElementById('dnpCard').className = 'deg-card';
