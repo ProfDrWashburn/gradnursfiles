@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0060)file:///C:/Users/rn4ho/Downloads/ebp-topic-advisor-v5_7.html -->
+<!-- saved from url=(0060)file:///C:/Users/rn4ho/Downloads/ebp-topic-advisor-v5_8.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -292,6 +292,19 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
 .not-exempt-box h3{font-family:'Lora',serif;font-size:1rem;color:var(--danger);margin-bottom:0.35rem;}
 .not-exempt-box p{font-size:0.85rem;color:var(--danger);line-height:1.5;}
 
+/* STEP NAV DOTS */
+.step-dots{display:flex;gap:0.28rem;align-items:center;flex-wrap:wrap;}
+.step-dot-btn{width:22px;height:22px;border-radius:50%;border:2px solid var(--border);background:var(--warm-white);cursor:default;font-size:0.62rem;font-weight:700;color:var(--text-light);display:flex;align-items:center;justify-content:center;transition:all 0.18s;flex-shrink:0;title:'';}
+.step-dot-btn.sd-done{background:var(--teal-pale);border-color:var(--teal);color:var(--teal);cursor:pointer;}
+.step-dot-btn.sd-done:hover{background:var(--teal);color:white;transform:scale(1.15);}
+.step-dot-btn.sd-current{background:var(--navy);border-color:var(--navy);color:white;cursor:default;}
+.save-ind{font-size:0.72rem;color:var(--success);font-weight:600;white-space:nowrap;display:none;margin-left:0.4rem;}
+.save-ind.show{display:inline;}
+.edit-btn{display:inline-flex;align-items:center;gap:0.3rem;background:transparent;border:1.5px solid var(--teal);color:var(--teal);border-radius:6px;font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:600;padding:0.22rem 0.65rem;cursor:pointer;transition:all 0.18s;margin-left:0.5rem;vertical-align:middle;}
+.edit-btn:hover{background:var(--teal-pale);}
+.save-btn{background:var(--navy);color:white;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:600;padding:0.55rem 1.2rem;cursor:pointer;transition:all 0.18s;display:flex;align-items:center;gap:0.4rem;}
+.save-btn:hover{background:#243352;}
+
 /* STEP VISIBILITY */
 .step{display:none;}
 .step.active{display:block;}
@@ -322,7 +335,20 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
 <div class="prog-wrap">
   <span class="prog-lbl">Progress</span>
   <div class="prog-bg"><div class="prog-fill" id="pFill" style="width:0%"></div></div>
-  <span class="prog-step" id="sInd">Welcome</span>
+  <div class="step-dots" id="stepDots">
+    <div class="step-dot-btn sd-current" id="sdot-1" onclick="navDot(1)" title="Welcome">W</div>
+    <div class="step-dot-btn" id="sdot-2" onclick="navDot(2)" title="Setting">1</div>
+    <div class="step-dot-btn" id="sdot-3" onclick="navDot(3)" title="Problem">2</div>
+    <div class="step-dot-btn" id="sdot-4" onclick="navDot(4)" title="Population">3</div>
+    <div class="step-dot-btn" id="sdot-5" onclick="navDot(5)" title="Nursing Sensitive">4</div>
+    <div class="step-dot-btn" id="sdot-6" onclick="navDot(6)" title="IRB">5</div>
+    <div class="step-dot-btn" id="sdot-7" onclick="navDot(7)" title="Intervention">6</div>
+    <div class="step-dot-btn" id="sdot-8" onclick="navDot(8)" title="Feasibility">7</div>
+    <div class="step-dot-btn" id="sdot-9" onclick="navDot(9)" title="Literature">8</div>
+    <div class="step-dot-btn" id="sdot-10" onclick="navDot(10)" title="PICOT">9</div>
+    <div class="step-dot-btn" id="sdot-11" onclick="navDot(11)" title="Summary">✓</div>
+  </div>
+  <span class="save-ind" id="saveInd">✓ Saved</span>
   <span class="prog-pct" id="pPct">0%</span>
 </div>
 
@@ -704,7 +730,7 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
           <div class="drp-item"><a href="https://www.nursingquality.org/" target="_blank">NDNQI (Press Ganey)</a><p>National nursing-sensitive quality benchmarks. Your hospital may have access to unit-level data.</p></div>
           <div class="drp-item"><a href="https://qualityindicators.ahrq.gov/" target="_blank">AHRQ Quality Indicators</a><p>Hospital-level quality measures for comparing performance to national standards.</p></div>
           <div class="drp-item"><a href="https://www.jointcommission.org/measurement/" target="_blank">The Joint Commission</a><p>National Patient Safety Goals and quality compliance standards.</p></div>
-          <div class="drp-item"><a href="https://www.cms.gov/medicare/quality" target="_blank">CMS Quality Measures</a><p>Readmission rates, HAC data, and patient experience benchmarks from Hospital Compare.</p></div>
+          <div class="drp-item"><a href="https://www.cms.gov/medicare/quality/measures" target="_blank">CMS Quality Measures</a><p>Readmission rates, HAC data, and patient experience benchmarks from Hospital Compare.</p></div>
           <div class="drp-item"><a href="https://www.cdc.gov/hai/index.html" target="_blank">CDC Healthcare-Associated Infections</a><p>National HAI surveillance data and prevention guidelines.</p></div>
           <div class="drp-item"><a href="https://www.ana.org/practice/patient-safety" target="_blank">ANA Patient Safety</a><p>Nursing-specific safety and quality practice standards.</p></div>
         </div>
@@ -1339,6 +1365,10 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
       <div class="meter-title">Overall Feasibility Estimate</div>
       <div class="meter-bg"><div class="meter-fill" id="mFill"></div></div>
       <div class="meter-text" id="mText"></div>
+      <div id="mBreakdown" style="margin-top:0.9rem;display:none;">
+        <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--text-light);margin-bottom:0.5rem;">Score breakdown and how to improve:</div>
+        <div id="mBreakdownItems" style="display:flex;flex-direction:column;gap:0.4rem;"></div>
+      </div>
     </div>
   </div>
 
@@ -1350,12 +1380,13 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
   </div>
 
   <div class="action-btns">
-    <button class="btn btn-dl" onclick="downloadTxt()">⇩ Download as Text File</button>
+    <button class="save-btn" onclick="saveProgress()">💾 Save Progress</button>
+    <button class="btn btn-dl" onclick="downloadDoc()">⇩ Download as Word Document</button>
     <button class="btn btn-s" onclick="restartTool()">Start Over</button>
   </div>
   <div class="co co-teal" style="margin-top:1rem;">
     <strong>How to open your downloaded file in Word</strong>
-    After clicking the download button, a file named EBP_PICOT_Snapshot_[YourName].txt will be saved to your Downloads folder. To open it in Microsoft Word: open Word, choose File then Open, navigate to your Downloads folder, and select the file. Word may ask what encoding to use -- choose UTF-8 or the default and click OK. You can then edit, format, and save it as a Word document. Alternatively, you can open the file in any text editor (Notepad on Windows, TextEdit on Mac) and copy the text directly into a Word document or email.
+    After clicking the download button, a file named EBP_PICOT_Snapshot_[YourName].doc will be saved to your Downloads folder. Double-click it to open directly in Microsoft Word. You can then edit, format, and save it as a Word document.
   </div>
 
   <div class="co co-teal" style="margin-top:1.25rem;" id="nextStepsBox">
@@ -1401,19 +1432,35 @@ let degree = '';
 const TOTAL = 11;
 
 // ===== NAVIGATION =====
+let highestStep = 1;
+
 function goTo(n) {
   document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
   document.getElementById('step-' + n).classList.add('active');
   const pct = Math.round(((n - 1) / (TOTAL - 1)) * 100);
   document.getElementById('pFill').style.width = pct + '%';
   document.getElementById('pPct').textContent = pct + '%';
-  document.getElementById('sInd').textContent = n <= 1 ? 'Welcome' : 'Step ' + (n - 1) + ' of 10';
   window.scrollTo({ top: 0, behavior: 'smooth' });
   if (n === 3)  setupProblemStep();
   if (n === 6)  setupIRBStep();
   if (n === 8)  setupFeasStep();
   if (n === 10) setupPICOTStep();
   if (n === 11) buildSummary();
+  // update step dots
+  if (n > highestStep) highestStep = n;
+  for (let i = 1; i <= TOTAL; i++) {
+    const dot = document.getElementById('sdot-' + i);
+    if (!dot) continue;
+    if (i === n)             dot.className = 'step-dot-btn sd-current';
+    else if (i <= highestStep) dot.className = 'step-dot-btn sd-done';
+    else                     dot.className = 'step-dot-btn';
+  }
+  autoSave();
+}
+
+function navDot(n) {
+  if (n > highestStep) return;
+  goTo(n);
 }
 
 // ===== DEGREE =====
@@ -1795,22 +1842,69 @@ function buildSummary() {
   const pO       = document.getElementById('pO').value.trim() || 'Not yet specified';
   const pT       = document.getElementById('pT').value.trim() || 'Approximately 8 to 10 weeks';
 
-  // Feasibility score
+  // Feasibility score with breakdown
   let sc = 0;
-  if (pop === 'yes') sc += 20; else if (pop === 'partial') sc += 10;
-  sc += (parseInt(interest || 0) / 5) * 20;
-  if (support === 'yes') sc += 20; else if (support === 'maybe') sc += 10;
-  if (timeline === 'yes') sc += 20; else if (timeline === 'maybe') sc += 10;
-  if (irb1 === 'no') sc += 10; if (irb3 === 'no') sc += 10;
+  const factors = [];
+
+  // Population access (20 pts)
+  if (pop === 'yes')      { sc += 20; factors.push({ ok: true,  label: 'Population access', pts: 20, max: 20, tip: '' }); }
+  else if (pop === 'partial') { sc += 10; factors.push({ ok: null, label: 'Population access', pts: 10, max: 20, tip: 'You indicated access may need to be arranged. Confirm with your preceptor or site coordinator before finalizing your topic.' }); }
+  else                    {             factors.push({ ok: false, label: 'Population access', pts: 0,  max: 20, tip: 'You indicated no access to your population. This is a significant barrier. Revise your topic to focus on a population you can reach through your current job or practicum placement.' }); }
+
+  // Interest (20 pts)
+  const intPts = (parseInt(interest || 0) / 5) * 20;
+  sc += intPts;
+  if (intPts >= 16)       factors.push({ ok: true,  label: 'Personal interest', pts: Math.round(intPts), max: 20, tip: '' });
+  else if (intPts >= 8)   factors.push({ ok: null,  label: 'Personal interest', pts: Math.round(intPts), max: 20, tip: 'Moderate interest. Projects you are genuinely invested in are more likely to be completed well. Consider whether a different problem might engage you more deeply.' });
+  else                    factors.push({ ok: false, label: 'Personal interest', pts: Math.round(intPts), max: 20, tip: 'Low interest level indicated. A practicum project requires sustained motivation over many weeks. Strongly consider choosing a problem you care about more deeply.' });
+
+  // Organizational support (20 pts)
+  if (support === 'yes')   { sc += 20; factors.push({ ok: true,  label: 'Organizational support', pts: 20, max: 20, tip: '' }); }
+  else if (support === 'maybe') { sc += 10; factors.push({ ok: null, label: 'Organizational support', pts: 10, max: 20, tip: 'Support not yet confirmed. Talk with your supervisor or preceptor as soon as possible. A project that leadership does not support is very difficult to implement.' }); }
+  else                     {             factors.push({ ok: false, label: 'Organizational support', pts: 0,  max: 20, tip: 'Significant organizational barriers indicated. A project without leadership support is unlikely to be feasible. Discuss alternatives with your faculty or project chair before proceeding.' }); }
+
+  // Timeline (20 pts)
+  if (timeline === 'yes')  { sc += 20; factors.push({ ok: true,  label: 'Timeline feasibility', pts: 20, max: 20, tip: '' }); }
+  else if (timeline === 'maybe') { sc += 10; factors.push({ ok: null, label: 'Timeline feasibility', pts: 10, max: 20, tip: 'Scope may need narrowing. Work with your faculty or project chair to define a realistic scope that can be completed within your practicum window.' }); }
+  else                     {             factors.push({ ok: false, label: 'Timeline feasibility', pts: 0,  max: 20, tip: 'Scope is too large for your timeframe. You must narrow your focus significantly before proceeding. Discuss with your faculty or project chair what a realistic scope looks like.' }); }
+
+  // IRB design (20 pts split)
+  if (irb1 === 'no')  { sc += 10; factors.push({ ok: true,  label: 'IRB: No identifiable data', pts: 10, max: 10, tip: '' }); }
+  else                {             factors.push({ ok: false, label: 'IRB: No identifiable data', pts: 0,  max: 10, tip: 'Identifiable data collection was indicated. Redesign your project to use de-identified or aggregate data to support exempt status.' }); }
+
+  if (irb3 === 'no')  { sc += 10; factors.push({ ok: true,  label: 'IRB: No vulnerable population as primary focus', pts: 10, max: 10, tip: '' }); }
+  else                {             factors.push({ ok: false, label: 'IRB: No vulnerable population as primary focus', pts: 0,  max: 10, tip: 'A vulnerable population was identified as your primary focus. This requires full IRB review and is not eligible for this course. Reframe your population focus.' }); }
+
   sc = Math.min(100, Math.round(sc));
 
   let mCol, mMsg;
   if (sc >= 75)      { mCol = '#1e7a55'; mMsg = sc + '% -- Strong feasibility. This topic looks promising. Proceed to your literature search and faculty consultation.'; }
-  else if (sc >= 50) { mCol = '#c8922a'; mMsg = sc + '% -- Moderate feasibility. Some areas need attention before finalizing your topic.'; }
-  else               { mCol = '#8b1f2f'; mMsg = sc + '% -- Lower feasibility. Significant concerns identified. Discuss with your faculty or project chair before proceeding.'; }
+  else if (sc >= 50) { mCol = '#c8922a'; mMsg = sc + '% -- Moderate feasibility. Review the items below and address any concerns before finalizing your topic.'; }
+  else               { mCol = '#8b1f2f'; mMsg = sc + '% -- Lower feasibility. Significant concerns identified. Review the items below and discuss with your faculty or project chair before proceeding.'; }
+
   document.getElementById('mFill').style.width = sc + '%';
   document.getElementById('mFill').style.background = mCol;
   document.getElementById('mText').textContent = mMsg;
+
+  // Build breakdown panel
+  const breakdownEl = document.getElementById('mBreakdown');
+  const itemsEl     = document.getElementById('mBreakdownItems');
+  itemsEl.innerHTML = '';
+  factors.forEach(f => {
+    const color = f.ok === true ? '#1e7a55' : f.ok === null ? '#c8922a' : '#8b1f2f';
+    const icon  = f.ok === true ? '&#10003;' : f.ok === null ? '&#9888;' : '&#10007;';
+    const bg    = f.ok === true ? '#eaf6f0' : f.ok === null ? '#fdf3e3' : '#fdf0f2';
+    const border= f.ok === true ? '#70c0a0' : f.ok === null ? '#e0a060' : '#d07080';
+    let html = `<div style="background:${bg};border:1px solid ${border};border-radius:7px;padding:0.55rem 0.85rem;font-size:0.84rem;">`;
+    html += `<div style="display:flex;justify-content:space-between;align-items:center;">`;
+    html += `<span style="font-weight:600;color:${color};">${icon} ${f.label}</span>`;
+    html += `<span style="font-size:0.75rem;color:${color};font-weight:700;">${f.pts} / ${f.max} pts</span>`;
+    html += `</div>`;
+    if (f.tip) html += `<div style="font-size:0.79rem;color:var(--text-mid);margin-top:0.25rem;line-height:1.45;">${f.tip}</div>`;
+    html += `</div>`;
+    itemsEl.innerHTML += html;
+  });
+  breakdownEl.style.display = sc < 100 ? 'block' : 'none';
 
   // IRB summary
   const irbOK = irb1 === 'no' && irb2 === 'yes' && irb3 === 'no' && irb4 === 'no';
@@ -1855,20 +1949,20 @@ function buildSummary() {
   document.getElementById('sumContent').innerHTML = `
     <div class="sum-sec"><div class="sum-lbl">Student</div><div class="sum-val">${name}</div></div>
     <div class="sum-sec"><div class="sum-lbl">Degree Program</div><div class="sum-val" style="font-weight:600;color:var(--navy);">${degLabel}</div></div>
-    <div class="sum-sec"><div class="sum-lbl">Project Framework</div><div class="sum-val">${fwLabels[fw] || 'Not selected'}</div></div>
-    <div class="sum-sec"><div class="sum-lbl">Practice Setting</div><div class="sum-val">${settings}</div></div>
-    <div class="sum-sec"><div class="sum-lbl">Identified Clinical Problem</div><div class="sum-val">${prob || 'Not specified'}</div></div>
+    <div class="sum-sec"><div class="sum-lbl">Project Framework</div><div class="sum-val">${fwLabels[fw] || 'Not selected'} <button class="edit-btn" onclick="goTo(10)">&#9998; Edit</button></div></div>
+    <div class="sum-sec"><div class="sum-lbl">Practice Setting</div><div class="sum-val">${settings} <button class="edit-btn" onclick="goTo(2)">&#9998; Edit</button></div></div>
+    <div class="sum-sec"><div class="sum-lbl">Identified Clinical Problem</div><div class="sum-val">${prob || 'Not specified'} <button class="edit-btn" onclick="goTo(3)">&#9998; Edit</button></div></div>
     ${perfGap ? '<div class="sum-sec"><div class="sum-lbl">Performance Gap</div><div class="sum-val">' + perfGap + '</div></div>' : ''}
     ${rootCause ? '<div class="sum-sec"><div class="sum-lbl">Root Cause (from DMAIC Analysis)</div><div class="sum-val">' + rootCause + '</div></div>' : ''}
-    <div class="sum-sec"><div class="sum-lbl">Population Access</div><div class="sum-val">${{ yes: 'Direct access confirmed', partial: 'Needs confirmation with preceptor or site coordinator', no: 'Barrier identified -- requires revision' }[pop] || 'Not answered'}</div></div>
-    <div class="sum-sec"><div class="sum-lbl">IRB Exempt Screening</div><div class="sum-val">${irbHTML}</div></div>
-    <div class="sum-sec"><div class="sum-lbl">Intervention Direction</div><div class="sum-val">${eduLbls[edu] || 'Not specified'}</div></div>
-    <div class="sum-sec"><div class="sum-lbl">Organizational Support</div><div class="sum-val">${{ yes: 'Leadership support anticipated', maybe: 'Not yet confirmed -- follow up with supervisor or preceptor', no: 'Organizational barriers identified -- discuss with faculty or project chair' }[support] || 'Not answered'}</div></div>
-    <div class="sum-sec"><div class="sum-lbl">Interest Level</div><div class="sum-val">${interest || '--'} / 5</div></div>
-    <div class="sum-sec"><div class="sum-lbl">Literature Status</div><div class="sum-val">${{ yes: 'Preliminary literature identified', some: 'General awareness -- formal search pending', no: 'No search conducted yet -- first priority action item' }[lit] || 'Not answered'}${litNotes ? '<br><em style="color:var(--text-light);font-size:0.85rem;">' + litNotes + '</em>' : ''}</div></div>
+    <div class="sum-sec"><div class="sum-lbl">Population Access</div><div class="sum-val">${{ yes: 'Direct access confirmed', partial: 'Needs confirmation with preceptor or site coordinator', no: 'Barrier identified -- requires revision' }[pop] || 'Not answered'} <button class="edit-btn" onclick="goTo(4)">&#9998; Edit</button></div></div>
+    <div class="sum-sec"><div class="sum-lbl">IRB Exempt Screening</div><div class="sum-val">${irbHTML} <button class="edit-btn" onclick="goTo(6)">&#9998; Edit</button></div></div>
+    <div class="sum-sec"><div class="sum-lbl">Intervention Direction</div><div class="sum-val">${eduLbls[edu] || 'Not specified'} <button class="edit-btn" onclick="goTo(7)">&#9998; Edit</button></div></div>
+    <div class="sum-sec"><div class="sum-lbl">Organizational Support</div><div class="sum-val">${{ yes: 'Leadership support anticipated', maybe: 'Not yet confirmed -- follow up with supervisor or preceptor', no: 'Organizational barriers identified -- discuss with faculty or project chair' }[support] || 'Not answered'} <button class="edit-btn" onclick="goTo(8)">&#9998; Edit</button></div></div>
+    <div class="sum-sec"><div class="sum-lbl">Interest Level</div><div class="sum-val">${interest || '--'} / 5 <button class="edit-btn" onclick="goTo(8)">&#9998; Edit</button></div></div>
+    <div class="sum-sec"><div class="sum-lbl">Literature Status</div><div class="sum-val">${{ yes: 'Preliminary literature identified', some: 'General awareness -- formal search pending', no: 'No search conducted yet -- first priority action item' }[lit] || 'Not answered'}${litNotes ? '<br><em style="color:var(--text-light);font-size:0.85rem;">' + litNotes + '</em>' : ''} <button class="edit-btn" onclick="goTo(9)">&#9998; Edit</button></div></div>
     ${dnpIRBReminder}
     <div class="sum-sec">
-      <div class="sum-lbl">Rough-Draft PICOT Question</div>
+      <div class="sum-lbl">Rough-Draft PICOT Question <button class="edit-btn" onclick="goTo(10)">&#9998; Edit PICOT</button></div>
       <div class="draft-banner" style="margin:0.5rem 0 0.75rem;">DRAFT ONLY -- Intervention must be confirmed by literature review</div>
       <div class="picot-sum">
         <div class="picot-sum-row"><div class="picot-sum-L">P</div><div class="picot-sum-V">${pP}</div></div>
@@ -1902,75 +1996,136 @@ function buildSummary() {
 }
 
 // ===== DOWNLOAD =====
-function downloadTxt() {
-  const name     = document.getElementById('sName').value.trim() || 'Student';
-  const deg      = degree.toUpperCase();
-  const degNote  = degree === 'msn'
+function downloadDoc() {
+  const name      = document.getElementById('sName').value.trim() || 'Student';
+  const deg       = degree.toUpperCase();
+  const degNote   = degree === 'msn'
     ? 'MSN -- Proposal only. Will not implement.'
     : 'DNP -- Full implementation required. IRB approval required before implementation begins.';
-  const settings = Array.from(document.querySelectorAll('#settingGroup input:checked')).map(i => i.value).join(', ');
-  const prob     = document.getElementById('nFinalProblem')?.value.trim() || document.getElementById('probTxt').value.trim();
+  const settings  = Array.from(document.querySelectorAll('#settingGroup input:checked')).map(i => i.value).join(', ') || 'Not specified';
+  const prob      = document.getElementById('nFinalProblem')?.value.trim() || document.getElementById('probTxt').value.trim() || 'Not specified';
   const rootCause = document.getElementById('aRootCause')?.value.trim() || '';
   const perfGap   = document.getElementById('mGap')?.value.trim() || '';
-  const pP       = document.getElementById('pP').value.trim() || 'Not specified';
-  const pI       = document.getElementById('pI').value.trim() || 'Not specified';
-  const pC       = document.getElementById('pC').value.trim() || 'Not specified';
-  const pO       = document.getElementById('pO').value.trim() || 'Not specified';
-  const pT       = document.getElementById('pT').value.trim() || 'Not specified';
-  const fw       = document.querySelector('input[name="framework"]:checked')?.value || 'Not selected';
-  const litNotes = document.getElementById('litNotes').value.trim();
-  const fwLabels = {
+  const pP        = document.getElementById('pP')?.value.trim() || 'Not specified';
+  const pI        = document.getElementById('pI')?.value.trim() || 'Not specified -- pending literature review';
+  const pC        = document.getElementById('pC')?.value.trim() || 'Compared to current standard care';
+  const pO        = document.getElementById('pO')?.value.trim() || 'Not specified';
+  const pT        = document.getElementById('pT')?.value.trim() || 'Not specified';
+  const fw        = document.querySelector('input[name="framework"]:checked')?.value || 'skip';
+  const litNotes  = document.getElementById('litNotes')?.value.trim() || '';
+  const interest  = document.querySelector('input[name="interest"]:checked')?.value || '--';
+  const support   = document.querySelector('input[name="support"]:checked')?.value || '';
+  const lit       = document.querySelector('input[name="lit"]:checked')?.value || '';
+  const pop       = document.querySelector('input[name="pop"]:checked')?.value || '';
+  const fwLabels  = {
     iowa: 'Iowa Model of EBP (MSN)',
     dnpcombined: 'Iowa Model + PDSA + Donabedian (DNP recommended combination)',
     qi: 'Other framework combination (confirm with faculty or project chair)',
-    skip: 'Not yet selected'
+    skip: 'Not yet selected -- confirm with faculty or project chair'
   };
+  const supportTxt = { yes: 'Leadership support anticipated', maybe: 'Not yet confirmed', no: 'Organizational barriers identified' };
+  const litTxt     = { yes: 'Preliminary literature identified', some: 'General awareness -- formal search pending', no: 'No search conducted yet' };
+  const popTxt     = { yes: 'Direct access confirmed', partial: 'Needs confirmation', no: 'Barrier identified -- requires revision' };
+
   const dnpIRB = degree === 'dnp' ? `
-DNP IRB REMINDERS:
-- IRB approval is a graduation requirement. No implementation may begin before written approval is received.
-- Exempt review typically takes 2 to 6 weeks. Allow more time if submitting near a break period.
-- IRB boards often do not meet during institutional breaks. Plan your submission at least 6 to 8 weeks before your intended implementation start date.
-- Follow the IRB submission sequence built into your course.
-- Contact your project chair with any questions.
+    <h2>DNP IRB Reminders</h2>
+    <ul>
+      <li>IRB approval is a graduation requirement. No implementation may begin before written approval is received.</li>
+      <li>Exempt review typically takes 2 to 6 weeks. Allow more time if submitting near a break period.</li>
+      <li>IRB boards often do not meet during institutional breaks. Plan your submission at least 6 to 8 weeks before your intended implementation start date.</li>
+      <li>Follow the IRB submission sequence built into your course.</li>
+      <li>Contact your project chair with any questions.</li>
+    </ul>` : '';
 
-` : '';
+  const nextSteps = degree === 'dnp' ? [
+    'Conduct a formal literature search: CINAHL, PubMed, Cochrane Library',
+    'Identify a validated protocol or bundle supported by evidence for this problem and population',
+    'Revise the PICOT intervention based on what the literature recommends',
+    'Begin drafting your IRB application -- confirm your institution\'s deadlines',
+    'Do not begin any implementation before receiving written IRB approval',
+    'Share this snapshot with your project chair at your next meeting'
+  ] : [
+    'Conduct a formal literature search: CINAHL, PubMed, Cochrane Library',
+    'Identify a validated protocol or bundle supported by evidence for this problem and population',
+    'Revise the PICOT intervention based on what the literature recommends',
+    'Ensure your proposal is designed to qualify for IRB exemption if implemented',
+    'Share this snapshot with your faculty at your next meeting'
+  ];
 
-  const text = `EBP PROJECT FEASIBILITY SNAPSHOT -- ROUGH DRAFT
-Graduate Nursing Program | ${deg}
-NOTE: Intervention must be confirmed by thorough literature review before finalizing.
+  const html = `
+<html xmlns:o='urn:schemas-microsoft-com:office:office'
+      xmlns:w='urn:schemas-microsoft-com:office:word'
+      xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<meta charset='utf-8'>
+<title>EBP PICOT Snapshot</title>
+<!--[if gte mso 9]>
+<xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom></w:WordDocument></xml>
+<![endif]-->
+<style>
+  body { font-family: Arial, sans-serif; font-size: 12pt; margin: 1in; color: #172035; }
+  h1 { font-size: 18pt; color: #172035; border-bottom: 2px solid #1e8a7a; padding-bottom: 6pt; margin-bottom: 12pt; }
+  h2 { font-size: 13pt; color: #1e8a7a; margin-top: 18pt; margin-bottom: 6pt; }
+  .label { font-size: 9pt; font-weight: bold; text-transform: uppercase; letter-spacing: 0.08em; color: #6b7f99; margin-bottom: 3pt; }
+  .value { font-size: 11pt; margin-bottom: 12pt; }
+  .draft-note { background: #fdf6e8; border: 1pt solid #c8922a; padding: 8pt 10pt; font-size: 10pt; color: #9a5a10; margin: 12pt 0; }
+  .picot-table { width: 100%; border-collapse: collapse; margin-top: 8pt; }
+  .picot-table td { padding: 6pt 10pt; border: 1pt solid #dde3ed; vertical-align: top; font-size: 11pt; }
+  .picot-table td:first-child { width: 1in; font-weight: bold; color: #1e8a7a; background: #e6f5f3; }
+  ul { margin-top: 4pt; padding-left: 20pt; }
+  li { margin-bottom: 4pt; font-size: 11pt; }
+  .footer { margin-top: 36pt; padding-top: 8pt; border-top: 1pt solid #dde3ed; font-size: 9pt; color: #6b7f99; }
+</style>
+</head>
+<body>
+<h1>EBP Project Feasibility Snapshot</h1>
+<p class="draft-note"><strong>ROUGH DRAFT.</strong> The intervention element of this PICOT must be confirmed by a thorough literature review before finalizing. This document is a starting point for advising conversations, not a final project plan.</p>
 
-Student: ${name}
-Degree: ${degNote}
-Framework: ${fwLabels[fw] || fw}
-Setting: ${settings}
+<h2>Student and Program Information</h2>
+<div class="label">Student Name</div><div class="value">${name}</div>
+<div class="label">Degree Program</div><div class="value">${degNote}</div>
+<div class="label">Project Framework</div><div class="value">${fwLabels[fw] || 'Not selected'}</div>
+<div class="label">Practice Setting</div><div class="value">${settings}</div>
 
-IDENTIFIED CLINICAL PROBLEM:
-${prob}
-${perfGap ? 'Performance gap: ' + perfGap : ''}
-${rootCause ? 'Root cause (DMAIC analysis): ' + rootCause : ''}
+<h2>Clinical Problem</h2>
+<div class="label">Final Problem Statement</div><div class="value">${prob}</div>
+${perfGap ? '<div class="label">Performance Gap</div><div class="value">' + perfGap + '</div>' : ''}
+${rootCause ? '<div class="label">Root Cause (DMAIC Analysis)</div><div class="value">' + rootCause + '</div>' : ''}
 
-ROUGH-DRAFT PICOT QUESTION (DRAFT ONLY -- pending literature review):
-P (Population): ${pP}
-I (Intervention -- DRAFT, not confirmed by literature): ${pI}
-C (Comparison): ${pC}
-O (Outcome): ${pO}
-T (Timeframe): ${pT}
+<h2>Feasibility Summary</h2>
+<div class="label">Population Access</div><div class="value">${popTxt[pop] || 'Not answered'}</div>
+<div class="label">Organizational Support</div><div class="value">${supportTxt[support] || 'Not answered'}</div>
+<div class="label">Personal Interest Level</div><div class="value">${interest} / 5</div>
+<div class="label">Literature Awareness</div><div class="value">${litTxt[lit] || 'Not answered'}${litNotes ? '<br><em>' + litNotes + '</em>' : ''}</div>
 
-LITERATURE NOTES: ${litNotes || 'None recorded yet'}
+${dnpIRB}
 
-${dnpIRB}NEXT STEPS:
-1. Conduct a formal literature search: CINAHL, PubMed, Cochrane Library
-2. Identify a validated protocol or bundle supported by evidence for this problem
-3. Revise the PICOT intervention based on what the literature recommends
-4. Share this snapshot with your faculty or project chair at your next meeting
-${degree === 'dnp' ? '5. Begin drafting your IRB application -- confirm your institution\'s deadlines\n6. Do not begin implementation before written IRB approval is received' : '5. Ensure your proposal is designed to qualify for IRB exemption if implemented'}
-`;
+<h2>Rough-Draft PICOT Question</h2>
+<p style="font-size:10pt;color:#9a5a10;"><em>Draft only. The intervention (I) must be confirmed by literature review before this PICOT is finalized.</em></p>
+<table class="picot-table">
+  <tr><td>P</td><td><strong>Population:</strong> ${pP}</td></tr>
+  <tr><td>I</td><td><strong>Intervention (DRAFT):</strong> ${pI}</td></tr>
+  <tr><td>C</td><td><strong>Comparison:</strong> ${pC}</td></tr>
+  <tr><td>O</td><td><strong>Outcome:</strong> ${pO}</td></tr>
+  <tr><td>T</td><td><strong>Timeframe:</strong> ${pT}</td></tr>
+</table>
 
-  const blob = new Blob([text], { type: 'text/plain' });
+<h2>Recommended Next Steps</h2>
+<ul>${nextSteps.map(s => '<li>' + s + '</li>').join('')}</ul>
+
+<div class="footer">
+  <strong>EBP PICOT Advisor</strong> | Developed 2026 by Dr. D. Washburn, Graduate Nursing Faculty.<br>
+  Interactive design and programming assistance provided by Claude AI (Anthropic).<br>
+  &copy; 2026 Dr. D. Washburn. All rights reserved. Educational use only.
+</div>
+</body>
+</html>`;
+
+  const blob = new Blob(['\ufeff', html], { type: 'application/msword' });
   const url  = URL.createObjectURL(blob);
   const a    = document.createElement('a');
   a.href     = url;
-  a.download = 'EBP_PICOT_Snapshot_' + name + '.txt';
+  a.download = 'EBP_PICOT_Snapshot_' + name + '.doc';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
@@ -2179,9 +2334,143 @@ function updateLivePreview() { updateStage1Preview(); }
 function updateProbSummary() { updateSummaryBox(); }
 function confirmDMAICAndGo() { confirmProblemAndGo(); }
 
-// ===== RESTART =====
+// ===== SAVE AND RESTORE =====
+const SAVE_KEY = 'ebp_picot_advisor_v5';
+let autoSaveTimer = null;
+
+function collectState() {
+  const state = { degree, highestStep, ts: Date.now() };
+  // text and textarea fields
+  ['sName','probTxt','litNotes','pP','pI','pC','pO','pT',
+   'dWho','dWhat','dWhere','mCurrent','mBenchmark','sFocus',
+   'nFinalProblem','nOutcomeDesc','why0','why1','why2','why3','why4','why5',
+   'fbPeople','fbProcess','fbEnv','aRootCause','oPrimary','oMeasure',
+   'cDesc','iDesc','iWho','pAge','pCondition','pLocation','pExtra'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) state[id] = el.value;
+  });
+  // selects
+  ['dProbType','mMeasureType','iType','nOutcomeType','pAge'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) state['sel_' + id] = el.value;
+  });
+  // radios
+  ['pop','irb1','irb2','irb3','irb4','edu','interest','support','timeline','lit','framework','nFeasible'].forEach(name => {
+    const el = document.querySelector('input[name="' + name + '"]:checked');
+    if (el) state['r_' + name] = el.value;
+  });
+  // checkboxes
+  ['setting','sens'].forEach(name => {
+    const vals = Array.from(document.querySelectorAll('input[name="' + name + '"]:checked')).map(e => e.value);
+    if (vals.length) state['cb_' + name] = vals;
+  });
+  // HOC selection
+  const hocSel = document.querySelector('.hoc-item.hoc-selected');
+  if (hocSel) state['hoc'] = hocSel.getAttribute('data-hoc');
+  return state;
+}
+
+function restoreState(state) {
+  if (!state) return;
+  degree = state.degree || '';
+  highestStep = state.highestStep || 1;
+  if (degree) selectDegree(degree);
+  // text fields
+  ['sName','probTxt','litNotes','pP','pI','pC','pO','pT',
+   'dWho','dWhat','dWhere','mCurrent','mBenchmark','sFocus',
+   'nFinalProblem','nOutcomeDesc','why0','why1','why2','why3','why4','why5',
+   'fbPeople','fbProcess','fbEnv','aRootCause','oPrimary','oMeasure',
+   'cDesc','iDesc','iWho','pCondition','pLocation','pExtra'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el && state[id] !== undefined) el.value = state[id];
+  });
+  // selects
+  ['dProbType','mMeasureType','iType','nOutcomeType','pAge'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el && state['sel_' + id]) el.value = state['sel_' + id];
+  });
+  // radios
+  ['pop','irb1','irb2','irb3','irb4','edu','interest','support','timeline','lit','framework','nFeasible'].forEach(name => {
+    const val = state['r_' + name];
+    if (val) {
+      const el = document.querySelector('input[name="' + name + '"][value="' + val + '"]');
+      if (el) { el.checked = true; el.closest('.ci')?.classList.add('selected'); }
+    }
+  });
+  // checkboxes
+  ['setting','sens'].forEach(name => {
+    const vals = state['cb_' + name] || [];
+    vals.forEach(v => {
+      const el = document.querySelector('input[name="' + name + '"][value="' + CSS.escape(v) + '"]');
+      if (el) { el.checked = true; el.closest('.ci')?.classList.add('selected'); }
+    });
+  });
+  // HOC
+  if (state.hoc) {
+    const hocEl = document.querySelector('.hoc-item[onclick*="' + state.hoc + '"]');
+    if (hocEl) { hocEl.classList.add('hoc-selected'); hocEl.setAttribute('data-hoc', state.hoc); }
+  }
+  // restore dot states
+  for (let i = 1; i <= TOTAL; i++) {
+    const dot = document.getElementById('sdot-' + i);
+    if (!dot) continue;
+    if (i <= highestStep) dot.className = 'step-dot-btn sd-done';
+  }
+}
+
+function autoSave() {
+  clearTimeout(autoSaveTimer);
+  autoSaveTimer = setTimeout(() => {
+    try {
+      localStorage.setItem(SAVE_KEY, JSON.stringify(collectState()));
+      const ind = document.getElementById('saveInd');
+      ind.classList.add('show');
+      setTimeout(() => ind.classList.remove('show'), 2000);
+    } catch(e) {}
+  }, 800);
+}
+
+function saveProgress() {
+  try {
+    localStorage.setItem(SAVE_KEY, JSON.stringify(collectState()));
+    const ind = document.getElementById('saveInd');
+    ind.textContent = '\u2713 Saved';
+    ind.classList.add('show');
+    setTimeout(() => ind.classList.remove('show'), 3000);
+    alert('Progress saved. Your answers will be restored if you return to this tool in the same browser.');
+  } catch(e) {
+    alert('Your browser did not allow saving. This may be because the tool is in private/incognito mode, or your browser has storage disabled. Use the Download button to save your snapshot instead.');
+  }
+}
+
+function checkForSavedProgress() {
+  try {
+    const saved = localStorage.getItem(SAVE_KEY);
+    if (!saved) return;
+    const state = JSON.parse(saved);
+    if (!state || !state.degree) return;
+    const mins = Math.round((Date.now() - (state.ts || 0)) / 60000);
+    const when = mins < 2 ? 'just now' : mins < 60 ? mins + ' minutes ago' : Math.round(mins/60) + ' hours ago';
+    if (confirm('Saved progress found from ' + when + '. Would you like to restore where you left off?')) {
+      restoreState(state);
+      goTo(Math.min(state.highestStep || 1, TOTAL));
+    } else {
+      localStorage.removeItem(SAVE_KEY);
+    }
+  } catch(e) {}
+}
+
+// Add auto-save triggers to all inputs
+function bindAutoSave() {
+  document.querySelectorAll('input, textarea, select').forEach(el => {
+    el.addEventListener('change', autoSave);
+    el.addEventListener('input', autoSave);
+  });
+}
+
+
 function restartTool() {
-  if (!confirm('Start over? All current responses will be cleared.')) return;
+  if (!confirm('Start over? All current responses and saved progress will be cleared.')) return;
   document.querySelectorAll('input[type="text"], textarea').forEach(el => el.value = '');
   // reset decision tree
   dtAnswers = {};
@@ -2214,6 +2503,8 @@ function restartTool() {
   document.querySelectorAll('.ia').forEach(el => el.classList.remove('show'));
   document.querySelectorAll('.compiled-preview').forEach(el => el.style.display = 'none');
   degree = '';
+  highestStep = 1;
+  try { localStorage.removeItem(SAVE_KEY); } catch(e) {}
   document.getElementById('msnCard').className = 'deg-card';
   document.getElementById('dnpCard').className = 'deg-card';
   document.getElementById('msnCheck').style.display = 'none';
@@ -2232,7 +2523,12 @@ function toggleRefs() {
   icon.innerHTML = open ? '&#9650;' : '&#9660;';
 }
 
+// also clear localStorage on restart
+const _origRestart = restartTool;
+
 goTo(1);
+bindAutoSave();
+checkForSavedProgress();
 </script>
 
 
