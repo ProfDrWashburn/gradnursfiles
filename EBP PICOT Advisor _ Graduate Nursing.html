@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0060)file:///C:/Users/rn4ho/Downloads/ebp-topic-advisor-v5_5.html -->
+<!-- saved from url=(0060)file:///C:/Users/rn4ho/Downloads/ebp-topic-advisor-v5_6.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -312,8 +312,8 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
 
 <header>
   <div class="hbadge">Graduate Nursing Program
-    <span class="dpill msn" id="hPillMSN" style="display: none;">MSN</span>
-    <span class="dpill dnp" id="hPillDNP" style="display: none;">DNP</span>
+    <span class="dpill msn" id="hPillMSN">MSN</span>
+    <span class="dpill dnp" id="hPillDNP">DNP</span>
   </div>
   <h1>EBP PICOT Advisor</h1>
   <p>A guided decision tool for developing a nursing-sensitive PICOT question</p>
@@ -321,7 +321,7 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
 
 <div class="prog-wrap">
   <span class="prog-lbl">Progress</span>
-  <div class="prog-bg"><div class="prog-fill" id="pFill" style="width: 0%;"></div></div>
+  <div class="prog-bg"><div class="prog-fill" id="pFill" style="width:0%"></div></div>
   <span class="prog-step" id="sInd">Welcome</span>
   <span class="prog-pct" id="pPct">0%</span>
 </div>
@@ -330,7 +330,7 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
 
 <!-- ===== STEP 1: WELCOME ===== -->
 <div class="step active" id="step-1">
-  <div class="card dnp-card">
+  <div class="card">
     <div class="stag"><span class="sdot"></span>Welcome</div>
     <h2 class="ctitle">Welcome to the EBP PICOT Advisor</h2>
     <p class="cdesc">This tool guides you step by step toward a strong, nursing-sensitive PICOT question for your EBP or quality improvement project. By the end you will have a rough-draft PICOT, a feasibility snapshot, and IRB guidance tailored to your degree program.</p>
@@ -352,7 +352,7 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
     <p style="font-size:0.82rem;color:var(--text-light);margin-bottom:0.75rem;">A green or purple border and checkmark confirm your selection before you click Begin.</p>
     <div class="deg-grid">
       <div class="deg-card" id="msnCard" onclick="selectDegree(&#39;msn&#39;)">
-        <div class="dcheck" id="msnCheck" style="color: rgb(30, 122, 85); display: none;">✓</div>
+        <div class="dcheck" id="msnCheck" style="color:#1e7a55;">✓</div>
         <div class="dicon">🎓</div>
         <div class="dtitle">MSN</div>
         <div class="dsub">Master of Science in Nursing</div>
@@ -360,15 +360,15 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
         <div class="daction" id="msnAction">Click to select</div>
       </div>
       <div class="deg-card" id="dnpCard" onclick="selectDegree(&#39;dnp&#39;)">
-        <div class="dcheck" id="dnpCheck" style="color: rgb(74, 42, 122); display: none;">✓</div>
+        <div class="dcheck" id="dnpCheck" style="color:#4a2a7a;">✓</div>
         <div class="dicon">⚕️</div>
         <div class="dtitle">DNP</div>
         <div class="dsub">Doctor of Nursing Practice</div>
         <div class="dsub" style="margin-top:0.4rem;">You will <strong>obtain IRB approval, implement, and evaluate</strong> the project as part of your practicum and graduation requirement.</div>
-        <div class="daction" id="dnpAction">Selected: Implementation track</div>
+        <div class="daction" id="dnpAction">Click to select</div>
       </div>
     </div>
-    <div class="ia ia-info" id="degConfirm" style="margin-top:0.75rem;"><strong>DNP selected.</strong> You are on the full implementation track. You will obtain IRB approval, implement, and evaluate your project as part of your practicum. You may now click Begin.</div>
+    <div class="ia" id="degConfirm" style="margin-top:0.75rem;"></div>
     <div class="btn-row">
       <button class="btn btn-p" onclick="welcomeNext()">Begin</button>
     </div>
@@ -377,7 +377,7 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
 
 <!-- ===== STEP 2: SETTING ===== -->
 <div class="step" id="step-2">
-  <div class="card dnp-card" id="card-2">
+  <div class="card" id="card-2">
     <div class="stag"><span class="sdot"></span>Step 1 of 10</div>
     <h2 class="ctitle">Your Practice Setting</h2>
     <p class="cdesc">Where do you currently work or where will you complete your practicum? Select all that apply.</p>
@@ -399,7 +399,7 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
 
 <!-- ===== STEP 3: PROBLEM ===== -->
 <div class="step" id="step-3">
-  <div class="card dnp-card" id="card-3">
+  <div class="card" id="card-3">
     <div class="stag"><span class="sdot"></span>Step 2 of 10</div>
     <h2 class="ctitle">Identifying Your Clinical Problem</h2>
     <p class="cdesc">This step uses three guided stages adapted from Lean Six Sigma DMAIC principles to help you arrive at a single, specific, measurable clinical problem. You will move through them one at a time. A running summary of your answers stays visible so you always know where you are.</p>
@@ -409,7 +409,7 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
       The most common graduate student mistake is choosing an intervention before understanding the problem. Lean Six Sigma DMAIC (Define, Measure, Analyze, Improve, Control) is one of the most widely validated QI frameworks in healthcare. It insists on a clear, data-supported problem before any solution is considered. These three stages apply that discipline in a format designed for nursing EBP and QI projects.
     </div>
 
-    <div class="co co-caution" id="researchWarning" style="display: block;">
+    <div class="co co-caution" id="researchWarning" style="display:none;">
       <strong>Important reminder for DNP students.</strong>
       Your project must be a practice change or QI initiative, not a research study. If your problem statement sounds like a research question, reframe it as a practice gap that an evidence-based intervention can address. Research requiring full IRB review is not compatible with practicum timelines.
     </div>
@@ -442,9 +442,9 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
           <option value="screening">Screening or assessment gap (eligible patients not being assessed)</option>
           <option value="transition">Care coordination or transition problem</option>
         </select>
-        <div class="example-box" id="exProbType" style="display: none;">
+        <div class="example-box" id="exProbType" style="display:none;">
           <strong>Example for this category:</strong>
-          <span id="exProbTypeText">Our unit had 3.2 falls per 1,000 patient days last quarter, compared to the national NDNQI benchmark of 1.9. Two patients sustained injuries.</span>
+          <span id="exProbTypeText"></span>
         </div>
       </div>
 
@@ -492,9 +492,9 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
         <span class="fhint">Check NDNQI, AHRQ quality indicators, The Joint Commission, or CMS benchmarks. Your hospital's quality department may also have internal benchmarks.</span>
       </div>
 
-      <div class="live-preview" id="lpStage1" style="display: none;">
+      <div class="live-preview" id="lpStage1" style="display:none;">
         <div class="live-preview-lbl">Your problem statement taking shape (updates as you type):</div>
-        <span id="lpStage1Text">testerstr. strstr strrster srtrstres. Current: strsetres. Benchmark: strstrrs</span>
+        <span id="lpStage1Text"></span>
       </div>
 
       <div class="stage-btns">
@@ -510,10 +510,10 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
       <!-- Recap of Stage 1 -->
       <div class="recap-strip" id="recap1">
         <div class="recap-strip-title">What you established in Stage 1:</div>
-        <div class="recap-row"><span class="recap-lbl">Problem type:</span><span class="recap-val" id="rc1Type">safety</span></div>
-        <div class="recap-row"><span class="recap-lbl">Who/where:</span><span class="recap-val" id="rc1Who">testerstr</span></div>
-        <div class="recap-row"><span class="recap-lbl">What is happening:</span><span class="recap-val" id="rc1What">strstr strrster srtrstres</span></div>
-        <div class="recap-row"><span class="recap-lbl">Current vs. target:</span><span class="recap-val" id="rc1Gap">Current: strsetres | Target: strstrrs</span></div>
+        <div class="recap-row"><span class="recap-lbl">Problem type:</span><span class="recap-val" id="rc1Type">--</span></div>
+        <div class="recap-row"><span class="recap-lbl">Who/where:</span><span class="recap-val" id="rc1Who">--</span></div>
+        <div class="recap-row"><span class="recap-lbl">What is happening:</span><span class="recap-val" id="rc1What">--</span></div>
+        <div class="recap-row"><span class="recap-lbl">Current vs. target:</span><span class="recap-val" id="rc1Gap">--</span></div>
       </div>
 
       <div class="co co-teal">
@@ -574,9 +574,9 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
         Consider the Hierarchy of Controls (see Stage 3) -- fixing the system is always more effective and more sustainable than training people to work around a broken one.
       </div>
 
-      <div class="live-preview" id="lpStage2" style="display: none;">
+      <div class="live-preview" id="lpStage2" style="display:none;">
         <div class="live-preview-lbl">Root cause analysis taking shape:</div>
-        <span id="lpStage2Text">Why 1: strst. Why 2: strstr. Why 3: strstrs. Process factor: strstr. Root cause: strstrre</span>
+        <span id="lpStage2Text"></span>
       </div>
 
       <div class="stage-btns">
@@ -593,10 +593,10 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
       <!-- Recap Stages 1 and 2 -->
       <div class="recap-strip" id="recap12">
         <div class="recap-strip-title">What you have established so far:</div>
-        <div class="recap-row"><span class="recap-lbl">Who/where:</span><span class="recap-val" id="rc2Who">testerstr</span></div>
-        <div class="recap-row"><span class="recap-lbl">Problem:</span><span class="recap-val" id="rc2What">strstr strrster srtrstres</span></div>
-        <div class="recap-row"><span class="recap-lbl">Current state:</span><span class="recap-val" id="rc2Current">Current: strsetres | Target: strstrrs</span></div>
-        <div class="recap-row"><span class="recap-lbl">Root cause:</span><span class="recap-val" id="rc2Root">strstrre</span></div>
+        <div class="recap-row"><span class="recap-lbl">Who/where:</span><span class="recap-val" id="rc2Who">--</span></div>
+        <div class="recap-row"><span class="recap-lbl">Problem:</span><span class="recap-val" id="rc2What">--</span></div>
+        <div class="recap-row"><span class="recap-lbl">Current state:</span><span class="recap-val" id="rc2Current">--</span></div>
+        <div class="recap-row"><span class="recap-lbl">Root cause:</span><span class="recap-val" id="rc2Root">--</span></div>
       </div>
 
       <!-- HIERARCHY OF CONTROLS -->
@@ -677,15 +677,15 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
       </div>
 
       <!-- PROBLEM SUMMARY -- shown before final statement so it informs writing -->
-      <div class="prob-summary-box" id="probSummaryBox" style="display: none;">
+      <div class="prob-summary-box" id="probSummaryBox" style="display:none;">
         <div class="psb-title">Your Problem Summary (use this to write your final statement below)</div>
-        <div class="psb-row"><span class="psb-lbl">Problem type:</span><span class="psb-val" id="psbType">safety</span></div>
-        <div class="psb-row"><span class="psb-lbl">Who / where:</span><span class="psb-val" id="psbWho">testerstr</span></div>
-        <div class="psb-row"><span class="psb-lbl">Current vs. target:</span><span class="psb-val" id="psbGap">Current: strsetres | Target: strstrrs</span></div>
-        <div class="psb-row"><span class="psb-lbl">Root cause:</span><span class="psb-val" id="psbRoot">strstrre</span></div>
-        <div class="psb-row"><span class="psb-lbl">Control level:</span><span class="psb-val" id="psbHOC">Level 3: Engineering/Structural</span></div>
-        <div class="psb-row"><span class="psb-lbl">Narrowed focus:</span><span class="psb-val" id="psbFocus">stsetre</span></div>
-        <div class="psb-row"><span class="psb-lbl">Outcome to measure:</span><span class="psb-val" id="psbOutcome">Clinical outcome: reduction in a specific rate or count (falls, infections, readmissions): setrsert</span></div>
+        <div class="psb-row"><span class="psb-lbl">Problem type:</span><span class="psb-val" id="psbType">--</span></div>
+        <div class="psb-row"><span class="psb-lbl">Who / where:</span><span class="psb-val" id="psbWho">--</span></div>
+        <div class="psb-row"><span class="psb-lbl">Current vs. target:</span><span class="psb-val" id="psbGap">--</span></div>
+        <div class="psb-row"><span class="psb-lbl">Root cause:</span><span class="psb-val" id="psbRoot">--</span></div>
+        <div class="psb-row"><span class="psb-lbl">Control level:</span><span class="psb-val" id="psbHOC">--</span></div>
+        <div class="psb-row"><span class="psb-lbl">Narrowed focus:</span><span class="psb-val" id="psbFocus">--</span></div>
+        <div class="psb-row"><span class="psb-lbl">Outcome to measure:</span><span class="psb-val" id="psbOutcome">--</span></div>
       </div>
 
       <!-- FINAL PROBLEM STATEMENT -->
@@ -723,11 +723,11 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
 </div>
 
 <!-- hidden field for backward compat -->
-<input type="hidden" id="probTxt" value="stserts sertersters">
+<input type="hidden" id="probTxt">
 
 <!-- ===== STEP 4: POPULATION ACCESS ===== -->
 <div class="step" id="step-4">
-  <div class="card dnp-card" id="card-4">
+  <div class="card" id="card-4">
     <div class="stag"><span class="sdot"></span>Step 3 of 10</div>
     <h2 class="ctitle">Population Access</h2>
     <p class="cdesc">You need reasonable access to the people affected by this problem. This means you, your colleagues, or your practicum site can reach the patients or staff who would be involved.</p>
@@ -748,7 +748,7 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
 
 <!-- ===== STEP 5: NURSING SENSITIVE ===== -->
 <div class="step" id="step-5">
-  <div class="card dnp-card" id="card-5">
+  <div class="card" id="card-5">
     <div class="stag"><span class="sdot"></span>Step 4 of 10</div>
     <h2 class="ctitle">Is This Nursing-Sensitive?</h2>
     <p class="cdesc">A nursing-sensitive project is one where a nursing-led practice change, protocol, assessment tool, or care bundle can meaningfully affect the outcome without requiring physician orders, prescriptive authority, or FDA oversight.</p>
@@ -789,16 +789,16 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
 
 <!-- ===== STEP 6: IRB ===== -->
 <div class="step" id="step-6">
-  <div class="card dnp-card" id="card-6">
+  <div class="card" id="card-6">
     <div class="stag"><span class="sdot"></span>Step 5 of 10</div>
-    <h2 class="ctitle" id="irbTitle">IRB Exempt Screening and Category Determination (DNP)</h2>
-    <p class="cdesc" id="irbDesc">As a DNP student, you must submit to your institution's IRB and receive written approval before implementing anything. Part one (four questions below) screens your project design. Part two (the DNP decision tree) routes you to the correct federal exempt category or flags your project as not exempt. Both parts must be completed.</p>
+    <h2 class="ctitle" id="irbTitle">IRB Exempt Screening</h2>
+    <p class="cdesc" id="irbDesc">Loading...</p>
 
-    <div id="irbDNPWarning" style="display: block;" class="co co-dnp">
+    <div id="irbDNPWarning" style="display:none;" class="co co-dnp">
       <strong>DNP students: IRB approval is a graduation requirement.</strong>
       You must submit to your institution's IRB and receive written approval before beginning any implementation. No exceptions. This screening shows you in real time whether your project design supports exempt status. Projects requiring a higher level of review are not eligible for this course. Read each question carefully before answering. A decision tree specific to DNP students follows the four screening questions below, routing you to the correct federal exempt category or flagging your project as not exempt.
     </div>
-    <div id="irbMSNNote" style="display: none;" class="co co-msn">
+    <div id="irbMSNNote" style="display:none;" class="co co-msn">
       <strong>MSN students: You are designing a proposal, not implementing.</strong>
       Your proposal must be designed so that, if implemented, it would qualify for IRB exemption. Answer each question as you would design the project.
     </div>
@@ -810,7 +810,7 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
     <!-- FOUR CORE SCREENING QUESTIONS (both MSN and DNP) -->
     <div style="display:flex;flex-direction:column;gap:1.5rem;">
       <div>
-        <p style="font-size:0.93rem;font-weight:600;color:var(--text-dark);margin-bottom:0.6rem;">1. Will you collect identifiable private information from individual patients (names, medical record numbers, diagnoses linked to named individuals)? <span id="irbRef3" style="display: inline; font-size: 0.77rem; color: var(--text-light); font-weight: 400;">(Related to 45 CFR 46 Subparts B, C, D)</span></p>
+        <p style="font-size:0.93rem;font-weight:600;color:var(--text-dark);margin-bottom:0.6rem;">1. Will you collect identifiable private information from individual patients (names, medical record numbers, diagnoses linked to named individuals)? <span id="irbRef3" style="display:none;font-size:0.77rem;color:var(--text-light);font-weight:400;">(Related to 45 CFR 46 Subparts B, C, D)</span></p>
         <div class="cg">
           <label class="ci" onclick="selectRadio(this,&#39;irb1&#39;);checkIRB()"><input type="radio" name="irb1" value="no"><span class="ct">No. Data will be de-identified, aggregate, observational, or not collected from individual patients.</span><span class="cbadge b-ok">Supports exempt</span></label>
           <label class="ci flagged" onclick="selectRadio(this,&#39;irb1&#39;);checkIRB()"><input type="radio" name="irb1" value="yes"><span class="ct">Yes, I plan to collect identifiable patient data.<small>This will likely require expedited rather than exempt review.</small></span><span class="cbadge b-flag">Caution</span></label>
@@ -828,7 +828,7 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
       </div>
 
       <div>
-        <p style="font-size:0.93rem;font-weight:600;color:var(--text-dark);margin-bottom:0.6rem;">3. Will your project primarily focus on a legally protected or vulnerable population such as prisoners, individuals who are cognitively impaired and unable to consent, or pregnant women in a clinical intervention? <span id="irbRef4" style="display: inline; font-size: 0.77rem; color: var(--text-light); font-weight: 400;">(45 CFR 46 Subparts B, C, D)</span></p>
+        <p style="font-size:0.93rem;font-weight:600;color:var(--text-dark);margin-bottom:0.6rem;">3. Will your project primarily focus on a legally protected or vulnerable population such as prisoners, individuals who are cognitively impaired and unable to consent, or pregnant women in a clinical intervention? <span id="irbRef4" style="display:none;font-size:0.77rem;color:var(--text-light);font-weight:400;">(45 CFR 46 Subparts B, C, D)</span></p>
         <div class="cg">
           <label class="ci" onclick="selectRadio(this,&#39;irb3&#39;);checkIRB()"><input type="radio" name="irb3" value="no"><span class="ct">No. My population does not primarily consist of a legally protected or vulnerable group.</span><span class="cbadge b-ok">Supports exempt</span></label>
           <label class="ci blocked" onclick="selectRadio(this,&#39;irb3&#39;);checkIRB()"><input type="radio" name="irb3" value="yes"><span class="ct">Yes. My project primarily targets a legally protected or vulnerable population.<small>Full IRB review is required. Not eligible for this course.</small></span><span class="cbadge b-no">Not eligible</span></label>
@@ -862,7 +862,7 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
       </div>
 
       <!-- NODE 1: IS THIS HUMAN SUBJECTS RESEARCH? -->
-      <div class="dt-node dt-active" id="dtNode1" style="display: block;">
+      <div class="dt-node dt-active" id="dtNode1">
         <div class="dt-q">
           Question 1 of 6: Does your project meet the federal definition of human subjects research?
           <span class="dt-ref">Under 45 CFR 46.102, human subjects research means a systematic investigation designed to develop or contribute to generalizable knowledge that involves obtaining information about living individuals. Quality improvement and EBP projects conducted solely to improve local practice do not meet this definition and may not require IRB review at all.</span>
@@ -872,7 +872,7 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
           <button class="dt-btn" onclick="dtAnswer(1,&#39;research&#39;)">Yes -- my project is systematic research intended to produce generalizable knowledge</button>
           <button class="dt-btn" onclick="dtAnswer(1,&#39;unsure&#39;)">I am unsure</button>
         </div>
-        <div class="dt-result res-ok" id="dtR1_qi">
+        <div class="dt-result" id="dtR1_qi">
           <strong>Your project may fall outside the scope of 45 CFR 46 entirely.</strong>
           If your project is a QI or operations improvement initiative with no intent to generalize findings, your institution may determine it does not constitute human subjects research and may not require IRB review. However, you must still submit a determination request to your IRB office. They will confirm whether a formal application is needed. Do not assume exemption without written confirmation.
         </div>
@@ -986,7 +986,7 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
       </div>
 
       <!-- FINAL DETERMINATION BOX -->
-      <div id="dtFinalBox" style="display: none; margin-top: 1.25rem;"></div>
+      <div id="dtFinalBox" style="display:none;margin-top:1.25rem;"></div>
 
     </div><!-- end irb-tree -->
 
@@ -999,7 +999,7 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
 
 <!-- ===== STEP 7: EDUCATION PITFALL ===== -->
 <div class="step" id="step-7">
-  <div class="card dnp-card" id="card-7">
+  <div class="card" id="card-7">
     <div class="stag"><span class="sdot"></span>Step 6 of 10</div>
     <h2 class="ctitle">A Common Pitfall: The Education-Only Project</h2>
     <p class="cdesc">Read this section carefully before continuing. It addresses one of the most common missteps at the graduate level.</p>
@@ -1052,10 +1052,10 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
 
 <!-- ===== STEP 8: FEASIBILITY ===== -->
 <div class="step" id="step-8">
-  <div class="card dnp-card" id="card-8">
+  <div class="card" id="card-8">
     <div class="stag"><span class="sdot"></span>Step 7 of 10</div>
     <h2 class="ctitle">Feasibility and Organizational Fit</h2>
-    <p class="cdesc" id="feasDesc">Your project must be plannable, IRB-approvable, implementable, and evaluable within your practicum window. Be honest about scope.</p>
+    <p class="cdesc" id="feasDesc">Loading...</p>
     <div style="display:flex;flex-direction:column;gap:1.25rem;">
       <div>
         <label class="fl">How interested are you in this problem? (1 = mild interest, 5 = deeply invested)</label>
@@ -1076,11 +1076,11 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
         </div>
       </div>
       <div>
-        <label class="fl" id="timelineLabel">Can the full project including IRB submission, implementation, and evaluation be completed within your practicum window?</label>
+        <label class="fl" id="timelineLabel">Can the full project fit within your practicum timeframe?</label>
         <div class="cg">
-          <label class="ci" onclick="selectRadio(this,&#39;timeline&#39;)"><input type="radio" name="timeline" value="yes"><span class="ct" id="tlYes">Yes. IRB submission, implementation, and evaluation all fit within my practicum schedule.</span></label>
-          <label class="ci" onclick="selectRadio(this,&#39;timeline&#39;)"><input type="radio" name="timeline" value="maybe"><span class="ct" id="tlMaybe">Possibly, with careful scheduling and scope management.<small>Map your IRB submission date, approval wait time, and evaluation window explicitly. Discuss with your project chair.</small></span></label>
-          <label class="ci flagged" onclick="selectRadio(this,&#39;timeline&#39;)"><input type="radio" name="timeline" value="no"><span class="ct" id="tlNo">No. The scope is too large to complete in my practicum window.<small>Significant narrowing is required before proceeding.</small></span></label>
+          <label class="ci" onclick="selectRadio(this,&#39;timeline&#39;)"><input type="radio" name="timeline" value="yes"><span class="ct" id="tlYes">Yes. The scope feels appropriate.</span></label>
+          <label class="ci" onclick="selectRadio(this,&#39;timeline&#39;)"><input type="radio" name="timeline" value="maybe"><span class="ct" id="tlMaybe">Possibly, with some narrowing of scope.</span></label>
+          <label class="ci flagged" onclick="selectRadio(this,&#39;timeline&#39;)"><input type="radio" name="timeline" value="no"><span class="ct" id="tlNo">No. The scope feels too large.</span></label>
         </div>
       </div>
     </div>
@@ -1093,7 +1093,7 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
 
 <!-- ===== STEP 9: LITERATURE ===== -->
 <div class="step" id="step-9">
-  <div class="card dnp-card" id="card-9">
+  <div class="card" id="card-9">
     <div class="stag"><span class="sdot"></span>Step 8 of 10</div>
     <h2 class="ctitle">Literature Awareness</h2>
     <p class="cdesc">You are not expected to have completed a literature search yet. However, you must understand: the literature must guide your intervention. You should not commit to a specific intervention until you have found evidence supporting it.</p>
@@ -1128,10 +1128,10 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
 
 <!-- ===== STEP 10: PICOT ===== -->
 <div class="step" id="step-10">
-  <div class="card dnp-card" id="card-10">
+  <div class="card" id="card-10">
     <div class="stag"><span class="sdot"></span>Step 9 of 10</div>
     <h2 class="ctitle">Your PICOT Question: The Heart of Your Project</h2>
-    <p class="cdesc" id="picotDesc">Your PICOT question defines what you will implement and evaluate. At the DNP level, your project chair will scrutinize every element, especially the intervention and outcome. Use the guided sub-questions under each element to build your answer, then refine the final text field.</p>
+    <p class="cdesc" id="picotDesc">Loading...</p>
 
     <div class="loss-banner">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8750a" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
@@ -1148,19 +1148,19 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
       <label class="fl" id="fwLabel">Project framework (optional):</label>
       <p style="font-size:0.82rem;color:var(--text-light);margin-bottom:0.6rem;">Selecting your framework tailors the phrasing suggestions. You can skip this and confirm with your faculty or project chair.</p>
       <div class="cg" id="frameworkGroup">
-        <label class="ci" id="fwIowaItem" onclick="selectRadio(this,&#39;framework&#39;);showFwDesc(&#39;iowa&#39;)" style="display: none;"><input type="radio" name="framework" value="iowa"><span class="ct">Iowa Model of Evidence-Based Practice<small>MSN program framework</small></span></label>
-        <label class="ci" id="fwDNPItem" onclick="selectRadio(this,&#39;framework&#39;);showFwDesc(&#39;dnpcombined&#39;)" style="display: flex;"><input type="radio" name="framework" value="dnpcombined"><span class="ct">Iowa Model + PDSA + Donabedian (recommended DNP combination)<small>Iowa Model for evidence selection, PDSA for implementation, Donabedian for evaluation</small></span></label>
-        <label class="ci" id="fwQIItem" onclick="selectRadio(this,&#39;framework&#39;);showFwDesc(&#39;qi&#39;)" style="display: flex;"><input type="radio" name="framework" value="qi"><span class="ct">Other framework combination (confirm with faculty or project chair)</span></label>
-        <label class="ci" id="fwSkipItem" onclick="selectRadio(this,&#39;framework&#39;);showFwDesc(&#39;skip&#39;)"><input type="radio" name="framework" value="skip" checked=""><span class="ct">Skip for now</span></label>
+        <label class="ci" id="fwIowaItem" onclick="selectRadio(this,&#39;framework&#39;);showFwDesc(&#39;iowa&#39;)" style="display:none;"><input type="radio" name="framework" value="iowa"><span class="ct">Iowa Model of Evidence-Based Practice<small>MSN program framework</small></span></label>
+        <label class="ci" id="fwDNPItem" onclick="selectRadio(this,&#39;framework&#39;);showFwDesc(&#39;dnpcombined&#39;)" style="display:none;"><input type="radio" name="framework" value="dnpcombined"><span class="ct">Iowa Model + PDSA + Donabedian (recommended DNP combination)<small>Iowa Model for evidence selection, PDSA for implementation, Donabedian for evaluation</small></span></label>
+        <label class="ci" id="fwQIItem" onclick="selectRadio(this,&#39;framework&#39;);showFwDesc(&#39;qi&#39;)" style="display:none;"><input type="radio" name="framework" value="qi"><span class="ct">Other framework combination (confirm with faculty or project chair)</span></label>
+        <label class="ci selected" id="fwSkipItem" onclick="selectRadio(this,&#39;framework&#39;);showFwDesc(&#39;skip&#39;)"><input type="radio" name="framework" value="skip" checked=""><span class="ct">Skip for now</span></label>
       </div>
       <div class="ia ia-info" id="fwDescIowa"><strong>Iowa Model (MSN):</strong> Use this framework to guide your problem identification, evidence review, and PICOT development. Your role is to determine what should be done based on evidence. You are not testing or implementing.</div>
       <div class="ia ia-info" id="fwDescDnpcombined"><strong>Iowa Model + PDSA + Donabedian (DNP):</strong> Iowa Model guides evidence selection and identifies your intervention. PDSA structures your implementation cycle. Donabedian (Structure, Process, Outcome) provides your evaluation framework. Each phase must be supported by your literature review.</div>
       <div class="ia ia-info" id="fwDescQi"><strong>Other framework:</strong> Confirm with your faculty or project chair. Regardless of framework, the intervention must be grounded in high-quality evidence, not selected first and then justified by literature.</div>
-      <div class="ia ia-info" id="fwDescSkip">Framework to be confirmed with your faculty or project chair. All suggestion features still work.</div>
+      <div class="ia ia-info show" id="fwDescSkip">Framework to be confirmed with your faculty or project chair. All suggestion features still work.</div>
     </div>
 
     <!-- Recalled answers -->
-    <div class="recalled" id="picotRecall" style="display: block;"><strong>Your DMAIC problem analysis to inform your PICOT:</strong><br>Setting: Hospital (inpatient)<br>Final problem statement: stserts sertersters<br>Root cause: strstrre<br>Intervention direction: Protocol / care bundle / assessment tool<br>Degree: DNP (Full implementation)</div>
+    <div class="recalled" id="picotRecall" style="display:none;"></div>
 
     <div class="picot-wrap">
       <div class="picot-wrap-title">PICOT Draft Framework</div>
@@ -1198,9 +1198,9 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
             <input type="text" id="pExtra" placeholder="e.g., admitted for more than 48 hours, receiving anticoagulation therapy..." oninput="compileP()">
             <span class="sub-hint">Include anything that defines who is and is not included in your population.</span>
           </div>
-          <div class="compiled-preview" id="pCompiled" style="display: none;">
+          <div class="compiled-preview" id="pCompiled" style="display:none;">
             <strong>Compiled P element (draft):</strong>
-            <span id="pCompiledText">Older adults (65 years and older), ststrst, strsrtr, strstrtr</span>
+            <span id="pCompiledText"></span>
           </div>
         </div>
         <label class="fl">Final P text (edit the compiled draft above, or write your own):</label>
@@ -1240,9 +1240,9 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
             <strong>Warning: Avoid multiple interventions.</strong>
             Choosing more than one intervention makes it impossible to determine which one produced the outcome. Choose a single, well-defined intervention supported by the evidence for your specific problem and population.
           </div>
-          <div class="compiled-preview" id="iCompiled" style="display: none;">
+          <div class="compiled-preview" id="iCompiled" style="display:none;">
             <strong>Compiled I element (draft):</strong>
-            <span id="iCompiledText">Protocol or care bundle implementation: strstr tresterst: delivered by tsretrest (DRAFT -- confirm with literature)</span>
+            <span id="iCompiledText"></span>
           </div>
         </div>
         <label class="fl">Final I text (edit the compiled draft above, or write your own):</label>
@@ -1270,9 +1270,9 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
             <label>Describe current practice at your site before any change:</label>
             <input type="text" id="cDesc" placeholder="e.g., no current formal fall prevention protocol, standard verbal discharge instructions without a structured checklist..." oninput="compileC()">
           </div>
-          <div class="compiled-preview" id="cCompiled" style="display: none;">
+          <div class="compiled-preview" id="cCompiled" style="display:none;">
             <strong>Compiled C element (draft):</strong>
-            <span id="cCompiledText">Compared to strsts tesrtrest</span>
+            <span id="cCompiledText"></span>
           </div>
         </div>
         <label class="fl">Final C text:</label>
@@ -1301,9 +1301,9 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
             <strong>Choose one specific outcome.</strong>
             Choosing multiple outcomes complicates your project and weakens your PICOT question. Identify the single most important measurable result that is directly tied to your intervention, and build your project around that.
           </div>
-          <div class="compiled-preview" id="oCompiled" style="display: none;">
+          <div class="compiled-preview" id="oCompiled" style="display:none;">
             <strong>Compiled O element (draft):</strong>
-            <span id="oCompiledText">setrsert, measured by strstr tgrststr</span>
+            <span id="oCompiledText"></span>
           </div>
         </div>
         <label class="fl">Final O text:</label>
@@ -1317,7 +1317,7 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
           <div class="plabel">Timeframe<small>Over what period will you implement and evaluate?</small></div>
         </div>
         <input type="text" id="pT" placeholder="e.g., over an 8-week practicum placement...">
-        <div class="field-hint" id="pThint">For a DNP project, your timeframe must account for IRB submission and approval time before implementation begins. Exempt review typically takes 2 to 6 weeks, but can take longer near summer or holiday breaks when IRB boards may not meet. Plan implementation to begin no earlier than 6 to 8 weeks after your planned IRB submission date.</div>
+        <div class="field-hint" id="pThint">Loading...</div>
       </div>
 
     </div><!-- end picot-wrap -->
@@ -1331,55 +1331,22 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
 
 <!-- ===== STEP 11: SUMMARY ===== -->
 <div class="step" id="step-11">
-  <div class="card dnp-card">
+  <div class="card">
     <div class="stag"><span class="sdot"></span>Your Summary</div>
     <h2 class="ctitle">EBP Project Feasibility Snapshot</h2>
     <p class="cdesc">Below is a summary of your responses and your rough-draft PICOT question. Download this file and bring it to your first advising meeting. This is a starting point and will evolve as your literature review progresses.</p>
     <div class="meter-wrap">
       <div class="meter-title">Overall Feasibility Estimate</div>
-      <div class="meter-bg"><div class="meter-fill" id="mFill" style="width: 80%; background: rgb(30, 122, 85);"></div></div>
-      <div class="meter-text" id="mText">80% -- Strong feasibility. This topic looks promising. Proceed to your literature search and faculty consultation.</div>
+      <div class="meter-bg"><div class="meter-fill" id="mFill"></div></div>
+      <div class="meter-text" id="mText"></div>
     </div>
   </div>
 
   <div id="sumCard">
     <h2>EBP Project Snapshot</h2>
-    <div class="sum-sub" id="sumSubLine">DNP Graduate Nursing Program -- Rough Draft</div>
+    <div class="sum-sub" id="sumSubLine">Graduate Nursing Program</div>
     <div class="draft-banner">ROUGH DRAFT -- Intervention must be confirmed by a thorough literature review before finalizing</div>
-    <div id="sumContent">
-    <div class="sum-sec"><div class="sum-lbl">Student</div><div class="sum-val">Student</div></div>
-    <div class="sum-sec"><div class="sum-lbl">Degree Program</div><div class="sum-val" style="font-weight:600;color:var(--navy);">DNP -- Full implementation required. IRB approval must be obtained before beginning any implementation.</div></div>
-    <div class="sum-sec"><div class="sum-lbl">Project Framework</div><div class="sum-val">Iowa Model + PDSA + Donabedian (DNP recommended combination)</div></div>
-    <div class="sum-sec"><div class="sum-lbl">Practice Setting</div><div class="sum-val">Hospital (inpatient)</div></div>
-    <div class="sum-sec"><div class="sum-lbl">Identified Clinical Problem</div><div class="sum-val">stserts sertersters</div></div>
-    
-    <div class="sum-sec"><div class="sum-lbl">Root Cause (from DMAIC Analysis)</div><div class="sum-val">strstrre</div></div>
-    <div class="sum-sec"><div class="sum-lbl">Population Access</div><div class="sum-val">Needs confirmation with preceptor or site coordinator</div></div>
-    <div class="sum-sec"><div class="sum-lbl">IRB Exempt Screening</div><div class="sum-val"><div class="sum-ok"><strong>No caution flags identified.</strong> All four screening responses support IRB exempt status. You must still submit and receive written IRB approval before any implementation begins.</div></div></div>
-    <div class="sum-sec"><div class="sum-lbl">Intervention Direction</div><div class="sum-val">Protocol / care bundle / assessment tool implementation</div></div>
-    <div class="sum-sec"><div class="sum-lbl">Organizational Support</div><div class="sum-val">Leadership support anticipated</div></div>
-    <div class="sum-sec"><div class="sum-lbl">Interest Level</div><div class="sum-val">5 / 5</div></div>
-    <div class="sum-sec"><div class="sum-lbl">Literature Status</div><div class="sum-val">No search conducted yet -- first priority action item</div></div>
-    
-    <div class="sum-sec">
-      <div class="sum-lbl">DNP IRB Review Reminders</div>
-      <div class="irb-reminder">
-        <div class="irb-reminder-title">Important</div>
-        <p>IRB approval is a graduation requirement. No implementation may begin before written approval is received. Plan carefully: exempt review typically takes 2 to 6 weeks from submission. If you submit near a summer break, winter recess, or other institutional closure, the review period may extend to one to two months or more because IRB boards often do not meet during those periods. Build at least 6 to 8 weeks between your planned submission date and your intended implementation start date. Follow the IRB submission sequence in your course. Contact your project chair with questions.</p>
-      </div>
-    </div>
-    <div class="sum-sec">
-      <div class="sum-lbl">Rough-Draft PICOT Question</div>
-      <div class="draft-banner" style="margin:0.5rem 0 0.75rem;">DRAFT ONLY -- Intervention must be confirmed by literature review</div>
-      <div class="picot-sum">
-        <div class="picot-sum-row"><div class="picot-sum-L">P</div><div class="picot-sum-V">Older adults (65 years and older), ststrst, strsrtr, strstrtr</div></div>
-        <div class="picot-sum-row"><div class="picot-sum-L">I</div><div class="picot-sum-V">Protocol or care bundle implementation: strstr tresterst: delivered by tsretrest (DRAFT -- confirm with literature)</div></div>
-        <div class="picot-sum-row"><div class="picot-sum-L">C</div><div class="picot-sum-V">Compared to strsts tesrtrest</div></div>
-        <div class="picot-sum-row"><div class="picot-sum-L">O</div><div class="picot-sum-V">setrsert, measured by strstr tgrststr</div></div>
-        <div class="picot-sum-row"><div class="picot-sum-L">T</div><div class="picot-sum-V">strstre</div></div>
-      </div>
-    </div>
-  </div>
+    <div id="sumContent"></div>
   </div>
 
   <div class="action-btns">
@@ -1393,9 +1360,18 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
 
   <div class="co co-teal" style="margin-top:1.25rem;" id="nextStepsBox">
     <strong>Recommended next steps</strong>
-    <ul id="nextStepsList"><li>Talk with your supervisor, preceptor, and colleagues about the problem.</li><li>Conduct a formal literature search in CINAHL, PubMed, and the Cochrane Library. Prioritize systematic reviews, meta-analyses, and clinical practice guidelines.</li><li>Identify a validated protocol, bundle, or tool supported by evidence for your problem and population. This will become the core of your intervention.</li><li>Revise the I in your PICOT based on what the literature recommends, not what is most convenient.</li><li>Begin drafting your IRB exempt application with your project chair. Do not wait until late in your program.</li><li>Confirm your institution's IRB submission deadlines and review timeline.</li><li>Share this snapshot with your project chair before your next meeting.</li><li>Do not begin any implementation before receiving written IRB approval.</li></ul>
+    <ul id="nextStepsList"></ul>
   </div>
 </div>
+
+  <div style="text-align:center;margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);font-size:0.78rem;color:var(--text-light);line-height:1.8;">
+    <div style="font-weight:600;color:var(--text-mid);font-size:0.82rem;margin-bottom:0.35rem;">EBP PICOT Advisor</div>
+    Developed 2026 by Dr. D. Washburn, Graduate Nursing Faculty, as an original educational resource for MSN and DNP students.<br>
+    Interactive design and programming assistance provided by Claude AI (Anthropic). Hosted via GitHub Pages.<br><br>
+    © 2026 Dr. D. Washburn. All rights reserved.
+    This tool is provided for educational use only and may not be copied, modified, sold, or redistributed without written permission from the author.
+    Unauthorized commercial use is prohibited.
+  </div>
 
 </main>
 
