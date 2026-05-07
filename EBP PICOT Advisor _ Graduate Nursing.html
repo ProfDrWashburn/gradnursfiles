@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0060)file:///C:/Users/rn4ho/Downloads/ebp-topic-advisor-v5_6.html -->
+<!-- saved from url=(0060)file:///C:/Users/rn4ho/Downloads/ebp-topic-advisor-v5_7.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1364,7 +1364,27 @@ textarea{resize:vertical;min-height:75px;line-height:1.55;}
   </div>
 </div>
 
-  <div style="text-align:center;margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);font-size:0.78rem;color:var(--text-light);line-height:1.8;">
+  <!-- COLLAPSIBLE REFERENCES -->
+  <div style="max-width:780px;margin:2rem auto 0;padding:0 1.25rem;">
+    <button onclick="toggleRefs()" id="refToggleBtn" style="background:var(--navy);color:white;border:none;border-radius:9px;padding:0.65rem 1.25rem;font-family:&#39;DM Sans&#39;,sans-serif;font-size:0.88rem;font-weight:600;cursor:pointer;width:100%;text-align:left;display:flex;justify-content:space-between;align-items:center;">
+      <span>Theoretical and Regulatory Framework References</span>
+      <span id="refToggleIcon" style="font-size:1rem;">▼</span>
+    </button>
+    <div id="refPanel" style="display:none;background:white;border:1px solid var(--border);border-top:none;border-radius:0 0 9px 9px;padding:1.25rem 1.5rem;">
+      <p style="font-size:0.78rem;color:var(--text-light);font-style:italic;margin-bottom:1rem;line-height:1.5;">The frameworks integrated into this tool are grounded in the following primary sources. Students are encouraged to consult these references when describing their project framework in proposals and manuscripts.</p>
+      <div style="font-size:0.82rem;color:var(--text-dark);line-height:1.85;font-family:&#39;DM Sans&#39;,sans-serif;">
+        <p style="margin-bottom:0.75rem;">Centers for Disease Control and Prevention, National Institute for Occupational Safety and Health. (2024, April 10). <em>Hierarchy of controls</em>. https://www.cdc.gov/niosh/hierarchy-of-controls/about/index.html</p>
+        <p style="margin-bottom:0.75rem;">Cullen, L., Hanrahan, K., Farrington, M., Tucker, S., &amp; Edmonds, S. (2023). <em>Evidence-based practice in action: Comprehensive strategies, tools, and tips from University of Iowa Hospitals and Clinics</em> (2nd ed.). Sigma Theta Tau International.</p>
+        <p style="margin-bottom:0.75rem;">Donabedian, A. (1988). The quality of care: How can it be assessed? <em>JAMA, 260</em>(12), 1743--1748. https://doi.org/10.1001/jama.260.12.1743</p>
+        <p style="margin-bottom:0.75rem;">Harry, M., &amp; Schroeder, R. (2000). <em>Six Sigma: The breakthrough management strategy revolutionizing the world's top corporations</em>. Doubleday.</p>
+        <p style="margin-bottom:0.75rem;">Iowa Model Collaborative. (2017). Iowa Model of evidence-based practice: Revisions and validation. <em>Worldviews on Evidence-Based Nursing, 14</em>(3), 175--182. https://doi.org/10.1111/wvn.12223</p>
+        <p style="margin-bottom:0;">U.S. Department of Health and Human Services, Office for Human Research Protections. (2018). <em>Federal policy for the protection of human subjects</em> (45 CFR 46). https://www.hhs.gov/ohrp/regulations-and-policy/regulations/45-cfr-46/index.html</p>
+      </div>
+      <p style="font-size:0.75rem;color:var(--text-light);margin-top:1rem;font-style:italic;">Note: The Donabedian (1988), Iowa Model Collaborative (2017), and Harry and Schroeder (2000) references are seminal foundational works cited as originally published in accordance with APA 7 guidelines for landmark sources.</p>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:2rem;padding:1.5rem 1.25rem;border-top:1px solid var(--border);font-size:0.78rem;color:var(--text-light);line-height:1.8;max-width:780px;margin-left:auto;margin-right:auto;">
     <div style="font-weight:600;color:var(--text-mid);font-size:0.82rem;margin-bottom:0.35rem;">EBP PICOT Advisor</div>
     Developed 2026 by Dr. D. Washburn, Graduate Nursing Faculty, as an original educational resource for MSN and DNP students.<br>
     Interactive design and programming assistance provided by Claude AI (Anthropic). Hosted via GitHub Pages.<br><br>
@@ -2202,6 +2222,14 @@ function restartTool() {
   document.getElementById('hPillDNP').style.display = 'none';
   document.querySelectorAll('.btn-p').forEach(b => b.classList.remove('dnp-btn'));
   goTo(1);
+}
+
+function toggleRefs() {
+  const panel = document.getElementById('refPanel');
+  const icon  = document.getElementById('refToggleIcon');
+  const open  = panel.style.display === 'none';
+  panel.style.display = open ? 'block' : 'none';
+  icon.innerHTML = open ? '&#9650;' : '&#9660;';
 }
 
 goTo(1);
