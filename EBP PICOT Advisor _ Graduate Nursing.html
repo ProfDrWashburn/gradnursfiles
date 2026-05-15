@@ -1467,7 +1467,7 @@ function togglePreview() {
 function updateDot(i) {
   const dot = document.getElementById('sdot-' + i);
   if (!dot) return;
-  const currentStep = parseInt(document.querySelector('.step.active')?.id?.replace('step-','') || '1');
+  const currentStep = parseInt((document.querySelector('.step.active') ? (document.querySelector('.step.active').id || '').replace('step-','') : '1'));
   if (i === currentStep)       dot.className = 'step-dot-btn sd-current';
   else if (i <= highestStep)   dot.className = 'step-dot-btn sd-done';
   else                         dot.className = 'step-dot-btn';
@@ -1637,13 +1637,13 @@ function setupPICOTStep() {
   document.getElementById('fwIowaItem').style.display = isMSN ? 'flex' : 'none';
   document.getElementById('fwDNPItem').style.display  = !isMSN ? 'flex' : 'none';
   document.getElementById('fwQIItem').style.display   = !isMSN ? 'flex' : 'none';
-  const edu = document.querySelector('input[name="edu"]:checked')?.value;
+  const edu = (document.querySelector('input[name="edu"]:checked') ? document.querySelector('input[name="edu"]:checked').value : undefined);
   const ew = document.getElementById('iEduWarn');
   ew.style.display = edu === 'edu_only' ? 'block' : 'none';
   const settings = Array.from(document.querySelectorAll('#settingGroup input:checked')).map(i => i.value).join(', ');
-  const prob = document.getElementById('nFinalProblem')?.value.trim() || document.getElementById('probTxt').value.trim();
-  const root = document.getElementById('aRootCause')?.value.trim() || '';
-  const gap  = document.getElementById('mGap')?.value.trim() || '';
+  const prob = (document.getElementById('nFinalProblem') ? document.getElementById('nFinalProblem').value.trim() : '') || document.getElementById('probTxt').value.trim();
+  const root = (document.getElementById('aRootCause') ? document.getElementById('aRootCause').value.trim() : '') || '';
+  const gap  = (document.getElementById('mGap') ? document.getElementById('mGap').value.trim() : '') || '';
   const eduLabels = { protocol: 'Protocol / care bundle / assessment tool', edu_informed: 'Education as one component tied to a measurable clinical outcome', edu_only: 'Pre/post education session (see guidance -- reconsider this design)', unsure: 'Not yet determined -- searching the literature first' };
   let html = '<strong>Your DMAIC problem analysis to inform your PICOT:</strong>';
   if (settings) html += '<br>Setting: ' + settings;
@@ -1710,10 +1710,10 @@ function compileO() {
 }
 
 function checkIRB() {
-  const v1 = document.querySelector('input[name="irb1"]:checked')?.value;
-  const v2 = document.querySelector('input[name="irb2"]:checked')?.value;
-  const v3 = document.querySelector('input[name="irb3"]:checked')?.value;
-  const v4 = document.querySelector('input[name="irb4"]:checked')?.value;
+  const v1 = (document.querySelector('input[name="irb1"]:checked') ? document.querySelector('input[name="irb1"]:checked').value : undefined);
+  const v2 = (document.querySelector('input[name="irb2"]:checked') ? document.querySelector('input[name="irb2"]:checked').value : undefined);
+  const v3 = (document.querySelector('input[name="irb3"]:checked') ? document.querySelector('input[name="irb3"]:checked').value : undefined);
+  const v4 = (document.querySelector('input[name="irb4"]:checked') ? document.querySelector('input[name="irb4"]:checked').value : undefined);
   document.getElementById('iA1').classList.toggle('show', v1 === 'yes');
   document.getElementById('iA2').classList.toggle('show', v2 === 'no');
   document.getElementById('iA3').classList.toggle('show', v3 === 'yes');
@@ -1737,7 +1737,7 @@ function selectRadio(el, name) {
   item.classList.add('selected');
   const inp = item.querySelector('input');
   if (inp) inp.checked = true;
-  if (name === 'pop') { document.getElementById('popAlert').classList.toggle('show', (inp?.value || '') === 'no'); }
+  if (name === 'pop') { document.getElementById('popAlert').classList.toggle('show', ((inp ? inp.value : '') || '') === 'no'); }
 }
 
 function validateCheck(gId, next) {
@@ -1783,20 +1783,20 @@ function generateSummary() { goTo(11); }
 function buildSummary() {
   const name     = document.getElementById('sName').value.trim() || 'Student';
   const settings = Array.from(document.querySelectorAll('#settingGroup input:checked')).map(i => i.value).join(', ') || 'Not specified';
-  const prob     = document.getElementById('nFinalProblem')?.value.trim() || document.getElementById('probTxt').value.trim();
-  const rootCause = document.getElementById('aRootCause')?.value.trim() || '';
-  const perfGap   = document.getElementById('mGap')?.value.trim() || '';
-  const pop      = document.querySelector('input[name="pop"]:checked')?.value;
-  const irb1     = document.querySelector('input[name="irb1"]:checked')?.value;
-  const irb2     = document.querySelector('input[name="irb2"]:checked')?.value;
-  const irb3     = document.querySelector('input[name="irb3"]:checked')?.value;
-  const irb4     = document.querySelector('input[name="irb4"]:checked')?.value;
-  const edu      = document.querySelector('input[name="edu"]:checked')?.value;
-  const interest = document.querySelector('input[name="interest"]:checked')?.value;
-  const support  = document.querySelector('input[name="support"]:checked')?.value;
-  const timeline = document.querySelector('input[name="timeline"]:checked')?.value;
-  const lit      = document.querySelector('input[name="lit"]:checked')?.value;
-  const fw       = document.querySelector('input[name="framework"]:checked')?.value || 'skip';
+  const prob     = (document.getElementById('nFinalProblem') ? document.getElementById('nFinalProblem').value.trim() : '') || document.getElementById('probTxt').value.trim();
+  const rootCause = (document.getElementById('aRootCause') ? document.getElementById('aRootCause').value.trim() : '') || '';
+  const perfGap   = (document.getElementById('mGap') ? document.getElementById('mGap').value.trim() : '') || '';
+  const pop      = (document.querySelector('input[name="pop"]:checked') ? document.querySelector('input[name="pop"]:checked').value : undefined);
+  const irb1     = (document.querySelector('input[name="irb1"]:checked') ? document.querySelector('input[name="irb1"]:checked').value : undefined);
+  const irb2     = (document.querySelector('input[name="irb2"]:checked') ? document.querySelector('input[name="irb2"]:checked').value : undefined);
+  const irb3     = (document.querySelector('input[name="irb3"]:checked') ? document.querySelector('input[name="irb3"]:checked').value : undefined);
+  const irb4     = (document.querySelector('input[name="irb4"]:checked') ? document.querySelector('input[name="irb4"]:checked').value : undefined);
+  const edu      = (document.querySelector('input[name="edu"]:checked') ? document.querySelector('input[name="edu"]:checked').value : undefined);
+  const interest = (document.querySelector('input[name="interest"]:checked') ? document.querySelector('input[name="interest"]:checked').value : undefined);
+  const support  = (document.querySelector('input[name="support"]:checked') ? document.querySelector('input[name="support"]:checked').value : undefined);
+  const timeline = (document.querySelector('input[name="timeline"]:checked') ? document.querySelector('input[name="timeline"]:checked').value : undefined);
+  const lit      = (document.querySelector('input[name="lit"]:checked') ? document.querySelector('input[name="lit"]:checked').value : undefined);
+  const fw       = (document.querySelector('input[name="framework"]:checked') ? document.querySelector('input[name="framework"]:checked').value : undefined) || 'skip';
   const litNotes = document.getElementById('litNotes').value.trim();
   const pP       = document.getElementById('pP').value.trim() || 'Not yet specified';
   const pI       = document.getElementById('pI').value.trim() || 'Not yet specified -- pending literature review';
@@ -1911,36 +1911,27 @@ function downloadDoc() {
   const name      = document.getElementById('sName').value.trim() || 'Student';
   const degNote   = degree === 'msn' ? 'MSN -- Proposal only. Will not implement.' : 'DNP -- Full implementation required. IRB approval required before implementation begins.';
   const settings  = Array.from(document.querySelectorAll('#settingGroup input:checked')).map(i => i.value).join(', ') || 'Not specified';
-  const prob      = document.getElementById('nFinalProblem')?.value.trim() || document.getElementById('probTxt').value.trim() || 'Not specified';
-  const rootCause = document.getElementById('aRootCause')?.value.trim() || '';
-  const perfGap   = document.getElementById('mGap')?.value.trim() || '';
-  const pP        = document.getElementById('pP')?.value.trim() || 'Not specified';
-  const pI        = document.getElementById('pI')?.value.trim() || 'Not specified -- pending literature review';
-  const pC        = document.getElementById('pC')?.value.trim() || 'Compared to current standard care';
-  const pO        = document.getElementById('pO')?.value.trim() || 'Not specified';
-  const pT        = document.getElementById('pT')?.value.trim() || 'Not specified';
-  const fw        = document.querySelector('input[name="framework"]:checked')?.value || 'skip';
-  const litNotes  = document.getElementById('litNotes')?.value.trim() || '';
-  const interest  = document.querySelector('input[name="interest"]:checked')?.value || '--';
-  const support   = document.querySelector('input[name="support"]:checked')?.value || '';
-  const lit       = document.querySelector('input[name="lit"]:checked')?.value || '';
-  const pop       = document.querySelector('input[name="pop"]:checked')?.value || '';
+  const prob      = (document.getElementById('nFinalProblem') ? document.getElementById('nFinalProblem').value.trim() : '') || document.getElementById('probTxt').value.trim() || 'Not specified';
+  const rootCause = (document.getElementById('aRootCause') ? document.getElementById('aRootCause').value.trim() : '') || '';
+  const perfGap   = (document.getElementById('mGap') ? document.getElementById('mGap').value.trim() : '') || '';
+  const pP        = (document.getElementById('pP') ? document.getElementById('pP').value.trim() : '') || 'Not specified';
+  const pI        = (document.getElementById('pI') ? document.getElementById('pI').value.trim() : '') || 'Not specified -- pending literature review';
+  const pC        = (document.getElementById('pC') ? document.getElementById('pC').value.trim() : '') || 'Compared to current standard care';
+  const pO        = (document.getElementById('pO') ? document.getElementById('pO').value.trim() : '') || 'Not specified';
+  const pT        = (document.getElementById('pT') ? document.getElementById('pT').value.trim() : '') || 'Not specified';
+  const fw        = (document.querySelector('input[name="framework"]:checked') ? document.querySelector('input[name="framework"]:checked').value : undefined) || 'skip';
+  const litNotes  = (document.getElementById('litNotes') ? document.getElementById('litNotes').value.trim() : '');
+  const interest  = (document.querySelector('input[name="interest"]:checked') ? document.querySelector('input[name="interest"]:checked').value : undefined) || '--';
+  const support   = (document.querySelector('input[name="support"]:checked') ? document.querySelector('input[name="support"]:checked').value : undefined) || '';
+  const lit       = (document.querySelector('input[name="lit"]:checked') ? document.querySelector('input[name="lit"]:checked').value : undefined) || '';
+  const pop       = (document.querySelector('input[name="pop"]:checked') ? document.querySelector('input[name="pop"]:checked').value : undefined) || '';
   const fwLabels  = { iowa: 'Iowa Model of EBP (MSN)', dnpcombined: 'Iowa Model + PDSA + Donabedian (DNP recommended combination)', qi: 'Other framework combination (confirm with faculty or project chair)', skip: 'Not yet selected -- confirm with faculty or project chair' };
   const supportTxt = { yes: 'Leadership support anticipated', maybe: 'Not yet confirmed', no: 'Organizational barriers identified' };
   const litTxt     = { yes: 'Preliminary literature identified', some: 'General awareness -- formal search pending', no: 'No search conducted yet' };
   const popTxt     = { yes: 'Direct access confirmed', partial: 'Needs confirmation', no: 'Barrier identified -- requires revision' };
   const dnpIRB = degree === 'dnp' ? `<h2>DNP IRB Reminders</h2><ul><li>IRB approval is a graduation requirement. No implementation may begin before written approval is received.</li><li>Exempt review typically takes 2 to 6 weeks. Allow more time if submitting near a break period.</li><li>IRB boards often do not meet during institutional breaks. Plan your submission at least 6 to 8 weeks before your intended implementation start date.</li><li>Follow the IRB submission sequence built into your course.</li><li>Contact your project chair with any questions.</li></ul>` : '';
   const nextSteps = degree === 'dnp' ? ['Conduct a formal literature search: CINAHL, PubMed, Cochrane Library','Identify a validated protocol or bundle supported by evidence for this problem and population','Revise the PICOT intervention based on what the literature recommends','Begin drafting your IRB application -- confirm your institution\'s deadlines','Do not begin any implementation before receiving written IRB approval','Share this snapshot with your project chair at your next meeting'] : ['Conduct a formal literature search: CINAHL, PubMed, Cochrane Library','Identify a validated protocol or bundle supported by evidence for this problem and population','Revise the PICOT intervention based on what the literature recommends','Ensure your proposal is designed to qualify for IRB exemption if implemented','Share this snapshot with your faculty at your next meeting'];
-  const html = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>EBP PICOT Snapshot</title><style>body{font-family:Arial,sans-serif;font-size:12pt;margin:1in;color:#172035;}h1{font-size:18pt;color:#172035;border-bottom:2px solid #1e8a7a;padding-bottom:6pt;margin-bottom:12pt;}h2{font-size:13pt;color:#1e8a7a;margin-top:18pt;margin-bottom:6pt;}.label{font-size:9pt;font-weight:bold;text-transform:uppercase;letter-spacing:0.08em;color:#6b7f99;margin-bottom:3pt;}.value{font-size:11pt;margin-bottom:12pt;}.draft-note{background:#fdf6e8;border:1pt solid #c8922a;padding:8pt 10pt;font-size:10pt;color:#9a5a10;margin:12pt 0;}.picot-table{width:100%;border-collapse:collapse;margin-top:8pt;}.picot-table td{padding:6pt 10pt;border:1pt solid #dde3ed;vertical-align:top;font-size:11pt;}.picot-table td:first-child{width:1in;font-weight:bold;color:#1e8a7a;background:#e6f5f3;}ul{margin-top:4pt;padding-left:20pt;}li{margin-bottom:4pt;font-size:11pt;}.footer{margin-top:36pt;padding-top:8pt;border-top:1pt solid #dde3ed;font-size:9pt;color:#6b7f99;}</style></head><body><h1>EBP Project Feasibility Snapshot</h1><p class="draft-note"><strong>ROUGH DRAFT.</strong> The intervention element of this PICOT must be confirmed by a thorough literature review before finalizing. This document is a starting point for advising conversations, not a final project plan.</p><h2>Student and Program Information</h2><div class="label">Student Name</div><div class="value">${name}</div><div class="label">Degree Program</div><div class="value">${degNote}</div><div class="label">Project Framework</div><div class="value">${fwLabels[fw] || 'Not selected'}</div><div class="label">Practice Setting</div><div class="value">${settings}</div><h2>Clinical Problem</h2><div class="label">Final Problem Statement</div><div class="value">${prob}</div>${perfGap ? '<div class="label">Performance Gap</div><div class="value">' + perfGap + '</div>' : ''}${rootCause ? '<div class="label">Root Cause (DMAIC Analysis)</div><div class="value">' + rootCause + '</div>' : ''}<h2>Feasibility Summary</h2><div class="label">Population Access</div><div class="value">${popTxt[pop] || 'Not answered'}</div><div class="label">Organizational Support</div><div class="value">${supportTxt[support] || 'Not answered'}</div><div class="label">Personal Interest Level</div><div class="value">${interest} / 5</div><div class="label">Literature Awareness</div><div class="value">${litTxt[lit] || 'Not answered'}${litNotes ? '<br><em>' + litNotes + '</em>' : ''}</div>${dnpIRB}<h2>Rough-Draft PICOT Question</h2><p style="font-size:10pt;color:#9a5a10;"><em>Draft only. The intervention (I) must be confirmed by literature review before this PICOT is finalized.</em></p><table class="picot-table"><tr><td>P</td><td><strong>Population:</strong> ${pP}</td></tr><tr><td>I</td><td><strong>Intervention (DRAFT):</strong> ${pI}</td></tr><tr><td>C</td><td><strong>Comparison:</strong> ${pC}</td></tr><tr><td>O</td><td><strong>Outcome:</strong> ${pO}</td></tr><tr><td>T</td><td><strong>Timeframe:</strong> ${pT}</td></tr></table><h2>Recommended Next Steps</h2><ul>${nextSteps.map(s => '<li>' + s + '</li>').join('')}</ul><div class="footer"><strong>EBP PICOT Advisor</strong> | Developed 2026 by Dr. D. Washburn, Graduate Nursing Faculty.<br>Interactive design and programming assistance provided by Claude AI (Anthropic).<br>&copy; 2026 Dr. D. Washburn. All rights reserved. Educational use only.</div><script>
-if ('serviceWorker' in navigator) {
-  const swCode = "const CACHE = 'picot-advisor-v1';\nself.addEventListener('install', e => {\n  self.skipWaiting();\n});\nself.addEventListener('activate', e => {\n  e.waitUntil(self.clients.claim());\n});\nself.addEventListener('fetch', e => {\n  e.respondWith(\n    caches.open(CACHE).then(cache =>\n      cache.match(e.request).then(cached => {\n        const fresh = fetch(e.request).then(res => {\n          cache.put(e.request, res.clone());\n          return res;\n        });\n        return cached || fresh;\n      })\n    )\n  );\n});";
-  const blob = new Blob([swCode], {type: 'application/javascript'});
-  const swUrl = URL.createObjectURL(blob);
-  navigator.serviceWorker.register(swUrl).catch(function(e){
-    console.log('SW:', e);
-  });
-}
-</script>
+  const html = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>EBP PICOT Snapshot</title><style>body{font-family:Arial,sans-serif;font-size:12pt;margin:1in;color:#172035;}h1{font-size:18pt;color:#172035;border-bottom:2px solid #1e8a7a;padding-bottom:6pt;margin-bottom:12pt;}h2{font-size:13pt;color:#1e8a7a;margin-top:18pt;margin-bottom:6pt;}.label{font-size:9pt;font-weight:bold;text-transform:uppercase;letter-spacing:0.08em;color:#6b7f99;margin-bottom:3pt;}.value{font-size:11pt;margin-bottom:12pt;}.draft-note{background:#fdf6e8;border:1pt solid #c8922a;padding:8pt 10pt;font-size:10pt;color:#9a5a10;margin:12pt 0;}.picot-table{width:100%;border-collapse:collapse;margin-top:8pt;}.picot-table td{padding:6pt 10pt;border:1pt solid #dde3ed;vertical-align:top;font-size:11pt;}.picot-table td:first-child{width:1in;font-weight:bold;color:#1e8a7a;background:#e6f5f3;}ul{margin-top:4pt;padding-left:20pt;}li{margin-bottom:4pt;font-size:11pt;}.footer{margin-top:36pt;padding-top:8pt;border-top:1pt solid #dde3ed;font-size:9pt;color:#6b7f99;}</style></head><body><h1>EBP Project Feasibility Snapshot</h1><p class="draft-note"><strong>ROUGH DRAFT.</strong> The intervention element of this PICOT must be confirmed by a thorough literature review before finalizing. This document is a starting point for advising conversations, not a final project plan.</p><h2>Student and Program Information</h2><div class="label">Student Name</div><div class="value">${name}</div><div class="label">Degree Program</div><div class="value">${degNote}</div><div class="label">Project Framework</div><div class="value">${fwLabels[fw] || 'Not selected'}</div><div class="label">Practice Setting</div><div class="value">${settings}</div><h2>Clinical Problem</h2><div class="label">Final Problem Statement</div><div class="value">${prob}</div>${perfGap ? '<div class="label">Performance Gap</div><div class="value">' + perfGap + '</div>' : ''}${rootCause ? '<div class="label">Root Cause (DMAIC Analysis)</div><div class="value">' + rootCause + '</div>' : ''}<h2>Feasibility Summary</h2><div class="label">Population Access</div><div class="value">${popTxt[pop] || 'Not answered'}</div><div class="label">Organizational Support</div><div class="value">${supportTxt[support] || 'Not answered'}</div><div class="label">Personal Interest Level</div><div class="value">${interest} / 5</div><div class="label">Literature Awareness</div><div class="value">${litTxt[lit] || 'Not answered'}${litNotes ? '<br><em>' + litNotes + '</em>' : ''}</div>${dnpIRB}<h2>Rough-Draft PICOT Question</h2><p style="font-size:10pt;color:#9a5a10;"><em>Draft only. The intervention (I) must be confirmed by literature review before this PICOT is finalized.</em></p><table class="picot-table"><tr><td>P</td><td><strong>Population:</strong> ${pP}</td></tr><tr><td>I</td><td><strong>Intervention (DRAFT):</strong> ${pI}</td></tr><tr><td>C</td><td><strong>Comparison:</strong> ${pC}</td></tr><tr><td>O</td><td><strong>Outcome:</strong> ${pO}</td></tr><tr><td>T</td><td><strong>Timeframe:</strong> ${pT}</td></tr></table><h2>Recommended Next Steps</h2><ul>${nextSteps.map(s => '<li>' + s + '</li>').join('')}</ul><div class="footer"><strong>EBP PICOT Advisor</strong> | Developed 2026 by Dr. D. Washburn, Graduate Nursing Faculty.<br>Interactive design and programming assistance provided by Claude AI (Anthropic).<br>&copy; 2026 Dr. D. Washburn. All rights reserved. Educational use only.</div><!-- PWA offline support not available in this browser -->
 </body></html>`;
   const blob = new Blob(['\ufeff', html], { type: 'application/msword' });
   const url  = URL.createObjectURL(blob);
@@ -1991,24 +1982,24 @@ function stageBack(n) {
 function validateStage(n) {
   if (n === 1) {
     if (!document.getElementById('dProbType').value) { alert('Please select the type of clinical concern before continuing.'); return false; }
-    if ((document.getElementById('dWho')?.value.trim() || '').length < 5) { alert('Please describe who is affected before continuing.'); return false; }
-    if ((document.getElementById('dWhat')?.value.trim() || '').length < 10) { alert('Please describe what is happening before continuing.'); return false; }
+    if (((document.getElementById('dWho') ? document.getElementById('dWho').value.trim() : '') || '').length < 5) { alert('Please describe who is affected before continuing.'); return false; }
+    if (((document.getElementById('dWhat') ? document.getElementById('dWhat').value.trim() : '') || '').length < 10) { alert('Please describe what is happening before continuing.'); return false; }
     if (!document.getElementById('mMeasureType').value) { alert('Please select how the problem is measured before continuing.'); return false; }
   }
   if (n === 2) {
-    if ((document.getElementById('why1')?.value.trim() || '').length < 3) { alert('Please complete at least Why 1 before continuing.'); return false; }
-    if ((document.getElementById('aRootCause')?.value.trim() || '').length < 5) { alert('Please identify the most likely root cause before continuing.'); return false; }
+    if (((document.getElementById('why1') ? document.getElementById('why1').value.trim() : '') || '').length < 3) { alert('Please complete at least Why 1 before continuing.'); return false; }
+    if (((document.getElementById('aRootCause') ? document.getElementById('aRootCause').value.trim() : '') || '').length < 5) { alert('Please identify the most likely root cause before continuing.'); return false; }
   }
   return true;
 }
 
 function populateRecap(stage) {
-  const who     = document.getElementById('dWho')?.value.trim() || '';
-  const what    = document.getElementById('dWhat')?.value.trim() || '';
-  const current = document.getElementById('mCurrent')?.value.trim() || '';
-  const bench   = document.getElementById('mBenchmark')?.value.trim() || '';
-  const root    = document.getElementById('aRootCause')?.value.trim() || '';
-  const type    = document.getElementById('dProbType')?.value || '';
+  const who     = (document.getElementById('dWho') ? document.getElementById('dWho').value.trim() : '') || '';
+  const what    = (document.getElementById('dWhat') ? document.getElementById('dWhat').value.trim() : '') || '';
+  const current = (document.getElementById('mCurrent') ? document.getElementById('mCurrent').value.trim() : '') || '';
+  const bench   = (document.getElementById('mBenchmark') ? document.getElementById('mBenchmark').value.trim() : '') || '';
+  const root    = (document.getElementById('aRootCause') ? document.getElementById('aRootCause').value.trim() : '') || '';
+  const type    = (document.getElementById('dProbType') ? document.getElementById('dProbType').value : '') || '';
   if (stage === 2) {
     document.getElementById('rc1Type').textContent  = type || '--';
     document.getElementById('rc1Who').textContent   = who || '--';
@@ -2028,10 +2019,10 @@ function populateRecap(stage) {
 
 function updateStage1Preview() {
   const type  = document.getElementById('dProbType').value;
-  const who   = document.getElementById('dWho')?.value.trim() || '';
-  const what  = document.getElementById('dWhat')?.value.trim() || '';
-  const cur   = document.getElementById('mCurrent')?.value.trim() || '';
-  const bench = document.getElementById('mBenchmark')?.value.trim() || '';
+  const who   = (document.getElementById('dWho') ? document.getElementById('dWho').value.trim() : '') || '';
+  const what  = (document.getElementById('dWhat') ? document.getElementById('dWhat').value.trim() : '') || '';
+  const cur   = (document.getElementById('mCurrent') ? document.getElementById('mCurrent').value.trim() : '') || '';
+  const bench = (document.getElementById('mBenchmark') ? document.getElementById('mBenchmark').value.trim() : '') || '';
   const exBox = document.getElementById('exProbType');
   const exTxt = document.getElementById('exProbTypeText');
   if (type && PROB_TYPE_EXAMPLES[type]) { exTxt.textContent = PROB_TYPE_EXAMPLES[type]; exBox.style.display = 'block'; } else { exBox.style.display = 'none'; }
@@ -2041,11 +2032,11 @@ function updateStage1Preview() {
 }
 
 function updateStage2Preview() {
-  const why1 = document.getElementById('why1')?.value.trim() || '';
-  const why2 = document.getElementById('why2')?.value.trim() || '';
-  const why3 = document.getElementById('why3')?.value.trim() || '';
-  const proc = document.getElementById('fbProcess')?.value.trim() || '';
-  const root = document.getElementById('aRootCause')?.value.trim() || '';
+  const why1 = (document.getElementById('why1') ? document.getElementById('why1').value.trim() : '') || '';
+  const why2 = (document.getElementById('why2') ? document.getElementById('why2').value.trim() : '') || '';
+  const why3 = (document.getElementById('why3') ? document.getElementById('why3').value.trim() : '') || '';
+  const proc = (document.getElementById('fbProcess') ? document.getElementById('fbProcess').value.trim() : '') || '';
+  const root = (document.getElementById('aRootCause') ? document.getElementById('aRootCause').value.trim() : '') || '';
   const parts = [why1 && 'Why 1: ' + why1, why2 && 'Why 2: ' + why2, why3 && 'Why 3: ' + why3, proc && 'Process factor: ' + proc, root && 'Root cause: ' + root].filter(Boolean);
   const lp = document.getElementById('lpStage2');
   if (parts.length >= 1) { document.getElementById('lpStage2Text').textContent = parts.join('. '); lp.style.display = 'block'; }
@@ -2054,14 +2045,14 @@ function updateStage2Preview() {
 function updateStage3Preview() { updateSummaryBox(); }
 
 function updateSummaryBox() {
-  const type    = document.getElementById('dProbType')?.value || '';
-  const who     = document.getElementById('dWho')?.value.trim() || '';
-  const current = document.getElementById('mCurrent')?.value.trim() || '';
-  const bench   = document.getElementById('mBenchmark')?.value.trim() || '';
-  const root    = document.getElementById('aRootCause')?.value.trim() || '';
-  const focus   = document.getElementById('sFocus')?.value.trim() || '';
-  const outcomeType = document.getElementById('nOutcomeType')?.value || '';
-  const outcomeDesc = document.getElementById('nOutcomeDesc')?.value.trim() || '';
+  const type    = (document.getElementById('dProbType') ? document.getElementById('dProbType').value : '') || '';
+  const who     = (document.getElementById('dWho') ? document.getElementById('dWho').value.trim() : '') || '';
+  const current = (document.getElementById('mCurrent') ? document.getElementById('mCurrent').value.trim() : '') || '';
+  const bench   = (document.getElementById('mBenchmark') ? document.getElementById('mBenchmark').value.trim() : '') || '';
+  const root    = (document.getElementById('aRootCause') ? document.getElementById('aRootCause').value.trim() : '') || '';
+  const focus   = (document.getElementById('sFocus') ? document.getElementById('sFocus').value.trim() : '') || '';
+  const outcomeType = (document.getElementById('nOutcomeType') ? document.getElementById('nOutcomeType').value : '') || '';
+  const outcomeDesc = (document.getElementById('nOutcomeDesc') ? document.getElementById('nOutcomeDesc').value.trim() : '') || '';
   const selHOC  = document.querySelector('.hoc-item.hoc-selected');
   const hocVal  = selHOC ? selHOC.getAttribute('data-hoc') : '';
   const hocLabel = hocVal && HOC_DATA[hocVal] ? HOC_DATA[hocVal].label : '--';
@@ -2082,7 +2073,7 @@ function updateSummaryBox() {
 
 function checkKnowledgeGuard() {
   const fields = ['why1','why2','why3','why4','why5','fbPeople','aRootCause'];
-  const combined = fields.map(id => (document.getElementById(id)?.value || '').toLowerCase()).join(' ');
+  const combined = fields.map(id => (document.getElementById(id) ? document.getElementById(id).value.toLowerCase() : '')).join(' ');
   const knowledgeTerms = ['knowledge','education','training','doesn\'t know','don\'t know','lack of awareness','unaware','not familiar','unfamiliar','teach','learning'];
   const hasKnowledge = knowledgeTerms.some(t => combined.includes(t));
   document.getElementById('knowledgeGuard').classList.toggle('show', hasKnowledge);
@@ -2099,15 +2090,15 @@ function selectHOC(val) {
 }
 
 function confirmProblemAndGo() {
-  const final    = document.getElementById('nFinalProblem')?.value.trim() || '';
-  const outType  = document.getElementById('nOutcomeType')?.value || '';
-  const outDesc  = document.getElementById('nOutcomeDesc')?.value.trim() || '';
+  const final    = (document.getElementById('nFinalProblem') ? document.getElementById('nFinalProblem').value.trim() : '') || '';
+  const outType  = (document.getElementById('nOutcomeType') ? document.getElementById('nOutcomeType').value : '') || '';
+  const outDesc  = (document.getElementById('nOutcomeDesc') ? document.getElementById('nOutcomeDesc').value.trim() : '') || '';
   if (final.length < 15) { alert('Please write your confirmed problem statement before continuing.'); return; }
   if (!outType)  { alert('Please select the type of outcome you will measure before continuing.'); return; }
   if (!outDesc)  { alert('Please describe the specific measurable outcome before continuing.'); return; }
   document.getElementById('probTxt').value = final;
-  const who   = document.getElementById('dWho')?.value.trim() || '';
-  const focus = document.getElementById('sFocus')?.value.trim() || '';
+  const who   = (document.getElementById('dWho') ? document.getElementById('dWho').value.trim() : '') || '';
+  const focus = (document.getElementById('sFocus') ? document.getElementById('sFocus').value.trim() : '') || '';
   const popVal = focus || who;
   if (popVal && document.getElementById('pP')) document.getElementById('pP').value = popVal;
   if (outDesc && document.getElementById('pO')) {
@@ -2142,8 +2133,8 @@ function restoreState(state) {
   if (degree) selectDegree(degree);
   ['sName','probTxt','litNotes','pP','pI','pC','pO','pT','dWho','dWhat','dWhere','mCurrent','mBenchmark','sFocus','nFinalProblem','nOutcomeDesc','why0','why1','why2','why3','why4','why5','fbPeople','fbProcess','fbEnv','aRootCause','oPrimary','oMeasure','cDesc','iDesc','iWho','pCondition','pLocation','pExtra'].forEach(id => { const el = document.getElementById(id); if (el && state[id] !== undefined) el.value = state[id]; });
   ['dProbType','mMeasureType','iType','nOutcomeType','pAge'].forEach(id => { const el = document.getElementById(id); if (el && state['sel_' + id]) el.value = state['sel_' + id]; });
-  ['pop','irb1','irb2','irb3','irb4','edu','interest','support','timeline','lit','framework','nFeasible'].forEach(name => { const val = state['r_' + name]; if (val) { const el = document.querySelector('input[name="' + name + '"][value="' + val + '"]'); if (el) { el.checked = true; el.closest('.ci')?.classList.add('selected'); } } });
-  ['setting','sens'].forEach(name => { const vals = state['cb_' + name] || []; vals.forEach(v => { const el = document.querySelector('input[name="' + name + '"][value="' + CSS.escape(v) + '"]'); if (el) { el.checked = true; el.closest('.ci')?.classList.add('selected'); } }); });
+  ['pop','irb1','irb2','irb3','irb4','edu','interest','support','timeline','lit','framework','nFeasible'].forEach(name => { const val = state['r_' + name]; if (val) { const el = document.querySelector('input[name="' + name + '"][value="' + val + '"]'); if (el) { el.checked = true; (el.closest('.ci') ? el.closest('.ci').classList.add('selected') : null); } } });
+  ['setting','sens'].forEach(name => { const vals = state['cb_' + name] || []; vals.forEach(v => { const el = document.querySelector('input[name="' + name + '"][value="' + CSS.escape(v) + '"]'); if (el) { el.checked = true; (el.closest('.ci') ? el.closest('.ci').classList.add('selected') : null); } }); });
   if (state.hoc) { const hocEl = document.querySelector('.hoc-item[onclick*="' + state.hoc + '"]'); if (hocEl) { hocEl.classList.add('hoc-selected'); hocEl.setAttribute('data-hoc', state.hoc); } }
   for (let i = 1; i <= TOTAL; i++) { const dot = document.getElementById('sdot-' + i); if (!dot) continue; if (i <= highestStep) dot.className = 'step-dot-btn sd-done'; }
 }
@@ -2218,14 +2209,5 @@ bindAutoSave();
 checkForSavedProgress();
 </script>
 
-<script>
-if ('serviceWorker' in navigator) {
-  const swCode = "const CACHE = 'picot-advisor-v1';\nself.addEventListener('install', e => {\n  self.skipWaiting();\n});\nself.addEventListener('activate', e => {\n  e.waitUntil(self.clients.claim());\n});\nself.addEventListener('fetch', e => {\n  e.respondWith(\n    caches.open(CACHE).then(cache =>\n      cache.match(e.request).then(cached => {\n        const fresh = fetch(e.request).then(res => {\n          cache.put(e.request, res.clone());\n          return res;\n        });\n        return cached || fresh;\n      })\n    )\n  );\n});";
-  const blob = new Blob([swCode], {type: 'application/javascript'});
-  const swUrl = URL.createObjectURL(blob);
-  navigator.serviceWorker.register(swUrl).catch(function(e){
-    console.log('SW:', e);
-  });
-}
-</script>
+<!-- PWA offline support not available in this browser -->
 </body></html>
